@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using FluentAssertions;
 using Xunit;
 namespace PowerUtils.Results.Validations.Tests.Conversions.Numerics
@@ -82,7 +83,7 @@ namespace PowerUtils.Results.Validations.Tests.Conversions.Numerics
         public void Number_ToNumberDouble_Double()
         {
             // Arrange
-            var val = "45,545434";
+            var val = $"45{CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator}545434";
             var validatable = val
                 .Validate();
 
@@ -105,7 +106,7 @@ namespace PowerUtils.Results.Validations.Tests.Conversions.Numerics
         public void Number_ToNumberFloat_Float()
         {
             // Arrange
-            var val = "43,54";
+            var val = $"43{CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator}54";
             var validatable = val
                 .Validate();
 
