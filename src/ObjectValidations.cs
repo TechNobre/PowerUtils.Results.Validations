@@ -14,7 +14,7 @@ namespace PowerUtils.Results
             [CallerArgumentExpression("value")] string propertyName = null
         )
         {
-            if(value == null)
+            if(value is null)
             {
                 return Error.Validation(
                     propertyName,

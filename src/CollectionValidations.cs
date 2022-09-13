@@ -15,7 +15,7 @@ namespace PowerUtils.Results
             [CallerArgumentExpression("value")] string propertyName = null
         ) where TValue : IEnumerable
         {
-            if(value == null)
+            if(value is null)
             {
                 return null;
             }
@@ -84,7 +84,7 @@ namespace PowerUtils.Results
             [CallerArgumentExpression("value")] string propertyName = null
         ) where TValue : IEnumerable
         {
-            if(value == null)
+            if(value is null)
             {
                 return null;
             }
@@ -124,7 +124,7 @@ namespace PowerUtils.Results
             [CallerArgumentExpression("value")] string propertyName = null
         ) where TValue : IEnumerable
         {
-            if(value == null)
+            if(value is null)
             {
                 return null;
             }
