@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Runtime.CompilerServices;
 
 namespace PowerUtils.Results
@@ -6,12 +7,11 @@ namespace PowerUtils.Results
     public static class StreamValidations
     {
         /// <summary>
-        /// Returns an <see cref="IError" /> if <paramref name="value"/> is empty. Error code 'REQUIRED'
+        /// Returns an <see cref="IError" /> if <paramref name="value"/> is empty
         /// </summary>
-        /// <param name="value">Value to validate</param>
-        /// <param name="propertyName">If not defined, the name of the variable passed by the <paramref name="value"/> property will be used</param>
         public static IError IfEmpty(
             this Stream value,
+            Func<IProperty<Stream>, IError> onError,
             [CallerArgumentExpression("value")] string propertyName = null
         )
         {
@@ -22,15 +22,26 @@ namespace PowerUtils.Results
 
             if(value.Length == 0)
             {
-                return Error.Validation(
-                    propertyName,
-                    ErrorCodes.REQUIRED,
-                    $"The '{propertyName}' cannot be empty"
-                );
+                return onError(new Property<Stream>(value, propertyName));
             }
 
             return null;
         }
+
+        /// <summary>
+        /// Returns an <see cref="IError" /> if <paramref name="value"/> is empty. Error code 'REQUIRED'
+        /// </summary>
+        public static IError IfEmpty(
+            this Stream value,
+            [CallerArgumentExpression("value")] string propertyName = null
+        ) => value.IfEmpty(
+            (_) => Error.Validation(
+                propertyName,
+                ErrorCodes.REQUIRED,
+                $"The '{propertyName}' cannot be empty"
+            ),
+            propertyName
+        );
 
         /// <summary>
         /// Validates if <paramref name="validatable.Value"/> is empty. Error code 'REQUIRED' in error list
@@ -38,34 +49,59 @@ namespace PowerUtils.Results
         public static IValidatable<Stream> IfEmpty(this IValidatable<Stream> validatable)
             => validatable.Validator(property => property.Value.IfEmpty(property.Name));
 
+        /// <summary>
+        /// Validates if <paramref name="validatable.Value"/> is empty
+        /// </summary>
+        public static IValidatable<Stream> IfEmpty(
+            this IValidatable<Stream> validatable,
+            Func<IProperty<Stream>, IError> onError
+        ) => validatable.Validator(property => property.Value.IfEmpty(onError));
 
 
         /// <summary>
-        /// Returns an <see cref="IError" /> if <paramref name="value"/> is null or empty. Error code 'REQUIRED'
+        /// Returns an <see cref="IError" /> if <paramref name="value"/> is null or empty
         /// </summary>
-        /// <param name="value">Value to validate</param>
-        /// <param name="propertyName">If not defined, the name of the variable passed by the <paramref name="value"/> property will be used</param>
         public static IError IfNullOrEmpty(
             this Stream value,
+            Func<IProperty<Stream>, IError> onError,
             [CallerArgumentExpression("value")] string propertyName = null
         )
         {
             if(value is null || value.Length == 0)
             {
-                return Error.Validation(
-                    propertyName,
-                    ErrorCodes.REQUIRED,
-                    $"The '{propertyName}' cannot be null or empty"
-                );
+                return onError(new Property<Stream>(value, propertyName));
             }
 
             return null;
         }
 
         /// <summary>
+        /// Returns an <see cref="IError" /> if <paramref name="value"/> is null or empty. Error code 'REQUIRED'
+        /// </summary>
+        public static IError IfNullOrEmpty(
+            this Stream value,
+            [CallerArgumentExpression("value")] string propertyName = null
+        ) => value.IfNullOrEmpty(
+            (_) => Error.Validation(
+                propertyName,
+                ErrorCodes.REQUIRED,
+                $"The '{propertyName}' cannot be null or empty"
+            ),
+            propertyName
+        );
+
+        /// <summary>
         /// Validates if <paramref name="validatable.Value"/> is null or empty. Error code 'REQUIRED' in error list
         /// </summary>
         public static IValidatable<Stream> IfNullOrEmpty(this IValidatable<Stream> validatable)
             => validatable.Validator(property => property.Value.IfNullOrEmpty(property.Name));
+
+        /// <summary>
+        /// Validates if <paramref name="validatable.Value"/> is null or empty
+        /// </summary>
+        public static IValidatable<Stream> IfNullOrEmpty(
+            this IValidatable<Stream> validatable,
+            Func<IProperty<Stream>, IError> onError
+        ) => validatable.Validator(property => property.Value.IfNullOrEmpty(onError));
     }
 }

@@ -76,7 +76,6 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Collections
             var min = 3;
 
 
-
             // Act
             var act = list.Validate()
                 .IfCountLessThan(min);
@@ -84,6 +83,44 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Collections
 
             // Assert
             act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void ForbiddenError_IfCountLessThan_ErrorCode()
+        {
+            // Arrange
+            var list = new string[] { "fake", "fake2", "fake3", "fake4" };
+            var min = 6;
+
+            var expectedProperty = "fakeProp less";
+            var expectedCode = "fakeCode less";
+            var expectedDescription = $"Fake description less > '{expectedProperty}'";
+
+
+            // Act
+            var act = list.Validate()
+                .IfCountLessThan(
+                    min,
+                    property =>
+                        Error.Forbidden(
+                            expectedProperty,
+                            expectedCode,
+                            expectedDescription
+                    )
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<ForbiddenError>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
+            );
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Linq;
+using FluentAssertions;
 using Xunit;
 
 namespace PowerUtils.Results.Validations.Tests.ShouldRules.Human
@@ -97,6 +98,41 @@ namespace PowerUtils.Results.Validations.Tests.ShouldRules.Human
 
             // Assert
             act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void ForbiddenError_ShouldBeGenderOrOther_ErrorCode()
+        {
+            // Arrange
+            var gender = "xx";
+
+            var expectedProperty = "fakeProp other";
+            var expectedCode = "fakeCode other";
+            var expectedDescription = $"Fake description other > '{expectedProperty}'";
+
+
+            // Act
+            var act = gender.Validate()
+                .ShouldBeGenderOrOther(property =>
+                    Error.Forbidden(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    )
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<ForbiddenError>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
+            );
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
 using Xunit;
 
@@ -68,6 +70,41 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Collections
 
             // Assert
             act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void ConflictError_IfNullOrEmpty_ErrorCode()
+        {
+            // Arrange
+            List<string> list = null;
+
+            var expectedProperty = "fakeProp conf";
+            var expectedCode = "fakeCode conf";
+            var expectedDescription = $"Fake description conf > '{expectedProperty}'";
+
+
+            // Act
+            var act = list.Validate()
+                .IfNullOrEmpty(property =>
+                    Error.Conflict(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    )
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<ConflictError>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
+            );
         }
     }
 }

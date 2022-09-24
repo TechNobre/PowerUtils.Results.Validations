@@ -3,13 +3,6 @@ using System.Collections.Generic;
 
 namespace PowerUtils.Results
 {
-    public interface IProperty<out TValue>
-    {
-        TValue Value { get; }
-
-        string Name { get; }
-    }
-
     public interface IValidatable<TValue> : IProperty<TValue>
     {
         IReadOnlyCollection<IError> Errors { get; }

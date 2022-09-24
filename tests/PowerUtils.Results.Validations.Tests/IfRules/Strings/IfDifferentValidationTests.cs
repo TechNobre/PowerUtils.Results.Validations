@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using FluentAssertions;
 using Xunit;
 
@@ -266,6 +267,44 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Strings
 
             // Assert
             act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void ForbiddenError_IfDifferent_ErrorCode()
+        {
+            // Arrange
+            var client = "faker";
+            var val = "faker__";
+
+            var expectedProperty = "fakeProp fake";
+            var expectedCode = "fakeCode fake";
+            var expectedDescription = $"Fake description fake > '{expectedProperty}'";
+
+
+            // Act
+            var act = client.Validate()
+                .IfDifferent(
+                    val,
+                    property => Error.Forbidden(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    ),
+                    StringComparison.CurrentCulture
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<ForbiddenError>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
+            );
         }
     }
 }

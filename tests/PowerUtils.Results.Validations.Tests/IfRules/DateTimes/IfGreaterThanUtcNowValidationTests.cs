@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using FluentAssertions;
 using Xunit;
 
@@ -101,6 +102,77 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.DateTimes
 
             // Assert
             act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void ForbiddenError_IfGreaterThanUtcNow_ErrorCode()
+        {
+            // Arrange
+            var dateOfBirth = new DateTime(2322, 1, 1);
+
+            var expectedProperty = "fakeProp lat";
+            var expectedCode = "fakeCode lat";
+            var expectedDescription = $"Fake description lat > '{expectedProperty}'";
+
+
+            // Act
+            var act = dateOfBirth.Validate()
+                .IfGreaterThanUtcNow(
+                    property => Error.Forbidden(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    )
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<ForbiddenError>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
+            );
+        }
+
+
+        [Fact]
+        public void ForbiddenError_IfGreaterThanUtcNowNullable_ErrorCode()
+        {
+            // Arrange
+            DateTime? dateOfBirth = new DateTime(2322, 1, 1);
+
+            var expectedProperty = "fakeProp lat";
+            var expectedCode = "fakeCode lat";
+            var expectedDescription = $"Fake description lat > '{expectedProperty}'";
+
+
+            // Act
+            var act = dateOfBirth.Validate()
+                .IfGreaterThanUtcNow(
+                    property => Error.Forbidden(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    )
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<ForbiddenError>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
+            );
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
 using PowerUtils.Results.Validations.Tests.IfRules.Fakes;
 using Xunit;
@@ -133,6 +134,41 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Objects
 
             // Assert
             act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void ForbiddenError_IfNull_ErrorCode()
+        {
+            // Arrange
+            FakeObj fakeObj = null;
+
+            var expectedProperty = "fakeProp";
+            var expectedCode = "fakeCode";
+            var expectedDescription = $"Fake description > '{expectedProperty}'";
+
+
+            // Act
+            var act = fakeObj.Validate()
+                .IfNull(property =>
+                    Error.Forbidden(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    )
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<ForbiddenError>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
+            );
         }
     }
 }

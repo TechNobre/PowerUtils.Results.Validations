@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Linq;
+using FluentAssertions;
 using Xunit;
 
 namespace PowerUtils.Results.Validations.Tests.IfRules.Globalizations
@@ -122,6 +123,43 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Globalizations
                 c.Code == ErrorCodes.INVALID
                 &&
                  c.Description == $"The '{nameof(countryCode)}' is invalid country code. ISO2 formats are allowed"
+            );
+        }
+
+
+
+        [Fact]
+        public void ForbiddenError_IfNotISO2_ErrorCode()
+        {
+            // Arrange
+            var countryCode = "ptr";
+
+            var expectedProperty = "fakeProp iso";
+            var expectedCode = "fakeCode iso";
+            var expectedDescription = $"Fake description iso > '{expectedProperty}'";
+
+
+            // Act
+            var act = countryCode.Validate()
+                .IfNotISO2(
+                    property => Error.Forbidden(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    )
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<ForbiddenError>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
             );
         }
     }

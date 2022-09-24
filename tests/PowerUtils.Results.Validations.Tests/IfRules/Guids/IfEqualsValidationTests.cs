@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using FluentAssertions;
 using Xunit;
 
@@ -240,6 +241,118 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Guids
 
             // Assert
             act.Errors.Should().HaveCount(0);
+        }
+
+
+        [Fact]
+        public void ConflictError_IfEquals_ErrorCode()
+        {
+            // Arrange
+            var value = Guid.NewGuid();
+            var otherValue = value;
+
+            var expectedProperty = "fake Prop";
+            var expectedCode = "fake Code";
+            var expectedDescription = $"Fake desc > '{expectedProperty}'";
+
+
+            // Act
+            var act = value.Validate()
+                .IfEquals(
+                    otherValue,
+                    property => Error.Conflict(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    )
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<ConflictError>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
+            );
+        }
+
+        [Fact]
+        public void UnauthorizedError_IfEqualsNullableOtherNullable_ErrorCode()
+        {
+            // Arrange
+            Guid? value = Guid.NewGuid();
+            var otherValue = value;
+
+            var expectedProperty = "fake Prop auth";
+            var expectedCode = "fake Code auth";
+            var expectedDescription = $"Fake desc auth > '{expectedProperty}'";
+
+
+            // Act
+            var act = value.Validate()
+                .IfEquals(
+                    otherValue,
+                    property => Error.Unauthorized(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    )
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<UnauthorizedError>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
+            );
+        }
+
+        [Fact]
+        public void Error_IfEqualsNullable_ErrorCode()
+        {
+            // Arrange
+            var value = Guid.NewGuid();
+            Guid? otherValue = value;
+
+            var expectedProperty = "fake Prop";
+            var expectedCode = "fake Code";
+            var expectedDescription = $"Fake desc > '{expectedProperty}'";
+
+
+            // Act
+            var act = value.Validate()
+                .IfEquals(
+                    otherValue,
+                    property => Error.Failure(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    )
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<Error>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
+            );
         }
     }
 }

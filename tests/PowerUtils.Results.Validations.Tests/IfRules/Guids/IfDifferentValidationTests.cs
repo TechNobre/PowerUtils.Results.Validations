@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using FluentAssertions;
 using Xunit;
 
@@ -312,6 +313,117 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Guids
                 c.Code == ErrorCodes.INVALID
                 &&
                 c.Description == $"The '{nameof(id)}' cannot be different to '{otherValue}'"
+            );
+        }
+
+        [Fact]
+        public void ConflictError_IfDifferent_ErrorCode()
+        {
+            // Arrange
+            var value = Guid.NewGuid();
+            var otherValue = Guid.NewGuid();
+
+            var expectedProperty = "fake Prop diff";
+            var expectedCode = "fake Code diff";
+            var expectedDescription = $"Fake desc diff > '{expectedProperty}'";
+
+
+            // Act
+            var act = value.Validate()
+                .IfDifferent(
+                    otherValue,
+                    property => Error.Conflict(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    )
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<ConflictError>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
+            );
+        }
+
+        [Fact]
+        public void ForbiddenError_IfDifferentNullableOtherNullable_ErrorCode()
+        {
+            // Arrange
+            Guid? value = Guid.NewGuid();
+            Guid? otherValue = Guid.NewGuid();
+
+            var expectedProperty = "fake Prop diff";
+            var expectedCode = "fake Code diff";
+            var expectedDescription = $"Fake desc diff > '{expectedProperty}'";
+
+
+            // Act
+            var act = value.Validate()
+                .IfDifferent(
+                    otherValue,
+                    property => Error.Forbidden(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    )
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<ForbiddenError>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
+            );
+        }
+
+        [Fact]
+        public void ForbiddenError_IfDifferentNullable_ErrorCode()
+        {
+            // Arrange
+            var value = Guid.NewGuid();
+            Guid? otherValue = Guid.NewGuid();
+
+            var expectedProperty = "fake Prop diff";
+            var expectedCode = "fake Code diff";
+            var expectedDescription = $"Fake desc diff > '{expectedProperty}'";
+
+
+            // Act
+            var act = value.Validate()
+                .IfDifferent(
+                    otherValue,
+                    property => Error.Forbidden(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    )
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<ForbiddenError>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
             );
         }
     }

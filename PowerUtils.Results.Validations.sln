@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0A05B10A-816
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{ED8D5AC7-9246-404E-8800-A98101BDE15F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerUtils.Results.Validations", "src\PowerUtils.Results.Validations.csproj", "{3BE5FCAC-9891-41C4-9E11-7B9124EEC769}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerUtils.Results.Validations", "src\PowerUtils.Results.Validations.csproj", "{08C2F172-8762-4EEF-A23A-0FAE2258B455}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PowerUtils.Results.Validations.Tests", "tests\PowerUtils.Results.Validations.Tests\PowerUtils.Results.Validations.Tests.csproj", "{3553A101-F565-432A-BA23-1976E133657D}"
 EndProject
@@ -17,10 +17,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3BE5FCAC-9891-41C4-9E11-7B9124EEC769}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3BE5FCAC-9891-41C4-9E11-7B9124EEC769}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3BE5FCAC-9891-41C4-9E11-7B9124EEC769}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3BE5FCAC-9891-41C4-9E11-7B9124EEC769}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08C2F172-8762-4EEF-A23A-0FAE2258B455}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08C2F172-8762-4EEF-A23A-0FAE2258B455}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08C2F172-8762-4EEF-A23A-0FAE2258B455}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08C2F172-8762-4EEF-A23A-0FAE2258B455}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3553A101-F565-432A-BA23-1976E133657D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3553A101-F565-432A-BA23-1976E133657D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3553A101-F565-432A-BA23-1976E133657D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -30,7 +30,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{3BE5FCAC-9891-41C4-9E11-7B9124EEC769} = {0A05B10A-816A-43AC-971C-854BC1915974}
+		{08C2F172-8762-4EEF-A23A-0FAE2258B455} = {0A05B10A-816A-43AC-971C-854BC1915974}
 		{3553A101-F565-432A-BA23-1976E133657D} = {ED8D5AC7-9246-404E-8800-A98101BDE15F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
