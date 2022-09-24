@@ -24,6 +24,24 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Strings
         }
 
         [Fact]
+        public void Equals_IfShorterThan_NoErrors()
+        {
+            // Arrange
+            var client = "My";
+            var max = 2;
+
+
+
+            // Act
+            var act = client.Validate()
+                .IfShorterThan(max);
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
         public void ShortText_IfShorterThan_OneError()
         {
             // Arrange

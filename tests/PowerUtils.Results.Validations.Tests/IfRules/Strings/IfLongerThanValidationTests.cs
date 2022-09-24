@@ -23,6 +23,24 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Strings
         }
 
         [Fact]
+        public void Equals_IfLongerThan_NoErrors()
+        {
+            // Arrange
+            var client = "MyText";
+            var max = 6;
+
+
+
+            // Act
+            var act = client.Validate()
+                .IfLongerThan(max);
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
         public void BigText_IfLongerThan_OneError()
         {
             // Arrange

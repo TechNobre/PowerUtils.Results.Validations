@@ -26,6 +26,78 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.DateTimes
         }
 
         [Fact]
+        public void EqualsMin_IfOutOfRange_NoErrors()
+        {
+            // Arrange
+            var dateOfBirth = new DateTime(1557, 4, 17);
+            var min = new DateTime(1557, 4, 17);
+            var max = new DateTime(2021, 1, 2);
+
+
+            // Act
+            var act = dateOfBirth.Validate()
+                .IfOutOfRange(min, max);
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void EqualsMax_IfOutOfRange_NoErrors()
+        {
+            // Arrange
+            var dateOfBirth = new DateTime(1998, 11, 21);
+            var min = new DateTime(1557, 4, 17);
+            var max = new DateTime(1998, 11, 21);
+
+
+            // Act
+            var act = dateOfBirth.Validate()
+                .IfOutOfRange(min, max);
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void EqualsMin_IfOutOfRangeNullable_NoErrors()
+        {
+            // Arrange
+            DateTime? dateOfBirth = new DateTime(1557, 4, 17);
+            var min = new DateTime(1557, 4, 17);
+            var max = new DateTime(2021, 1, 2);
+
+
+            // Act
+            var act = dateOfBirth.Validate()
+                .IfOutOfRange(min, max);
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void EqualsMax_IfOutOfRangeNullable_NoErrors()
+        {
+            // Arrange
+            DateTime? dateOfBirth = new DateTime(1998, 11, 21);
+            var min = new DateTime(1557, 4, 17);
+            var max = new DateTime(1998, 11, 21);
+
+
+            // Act
+            var act = dateOfBirth.Validate()
+                .IfOutOfRange(min, max);
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
         public void Past_IfOutOfRange_OneError()
         {
             // Arrange

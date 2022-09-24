@@ -63,6 +63,38 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.DateTimes
             act.Errors.Should().HaveCount(0);
         }
 
+        [Fact]
+        public void Equals_IfGreaterThanUtcToday_NoErrors()
+        {
+            // Arrange
+            var dateOfBirth = DateTime.UtcNow.Date;
+
+
+            // Act
+            var act = dateOfBirth.Validate()
+                .IfGreaterThanUtcToday();
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void Equals_IfGreaterThanUtcTodayNullable_NoErrors()
+        {
+            // Arrange
+            DateTime? dateOfBirth = DateTime.UtcNow.Date;
+
+
+            // Act
+            var act = dateOfBirth.Validate()
+                .IfGreaterThanUtcToday();
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
 
         [Fact]
         public void UtcNowMore2Seconds_IfGreaterThanUtcTodayNullable_OneError()

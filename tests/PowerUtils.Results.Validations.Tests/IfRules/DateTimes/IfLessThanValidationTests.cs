@@ -50,6 +50,40 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.DateTimes
         }
 
         [Fact]
+        public void Equals_IfLessThan_NoErrors()
+        {
+            // Arrange
+            var dateOfBirth = new DateTime(1789, 1, 14);
+            var min = new DateTime(1789, 1, 14);
+
+
+            // Act
+            var act = dateOfBirth.Validate()
+                .IfLessThan(min);
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void Equals_IfLessThanNullable_NoErrors()
+        {
+            // Arrange
+            DateTime? dateOfBirth = new DateTime(1289, 1, 14);
+            var min = new DateTime(1289, 1, 14);
+
+
+            // Act
+            var act = dateOfBirth.Validate()
+                .IfLessThan(min);
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
         public void Null_IfLessThanNullable_NoErrors()
         {
             // Arrange

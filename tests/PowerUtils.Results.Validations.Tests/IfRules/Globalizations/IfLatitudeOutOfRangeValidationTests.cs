@@ -71,6 +71,70 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Globalizations
         }
 
         [Fact]
+        public void EqualsMin_IfLatitudeOutOfRange_NoErrors()
+        {
+            // Arrange
+            var degree = -90;
+
+
+            // Act
+            var act = degree.Validate()
+                .IfLatitudeOutOfRange();
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void EqualsMax_IfLatitudeOutOfRange_NoErrors()
+        {
+            // Arrange
+            var degree = 90;
+
+
+            // Act
+            var act = degree.Validate()
+                .IfLatitudeOutOfRange();
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void EqualsMin_IfLatitudeOutOfRangeNullable_NoErrors()
+        {
+            // Arrange
+            float? degree = -90;
+
+
+            // Act
+            var act = degree.Validate()
+                .IfLatitudeOutOfRange();
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void EqualsMax_IfLatitudeOutOfRangeNullable_NoErrors()
+        {
+            // Arrange
+            float? degree = 90;
+
+
+            // Act
+            var act = degree.Validate()
+                .IfLatitudeOutOfRange();
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
         public void Small_IfLatitudeOutOfRangeNullable_OneError()
         {
             // Arrange

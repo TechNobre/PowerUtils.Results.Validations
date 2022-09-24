@@ -162,5 +162,19 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Globalizations
                 c.Description == expectedDescription
             );
         }
+
+        [Fact]
+        public void AllIso2_IfNotISO2_AllShouldBeNull()
+        {
+            // Arrange && Act
+            foreach(var countryCode in Globalization.UtilsGlobalization.Countries)
+            {
+                var act = countryCode.Key.IfNotISO2();
+
+
+                // Assert
+                act.Should().BeNull();
+            }
+        }
     }
 }
