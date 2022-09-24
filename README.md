@@ -181,6 +181,8 @@ var error4 = email2.ShouldBeEmail();
   - `IfNotGenderOrOther();` or `ShouldBeGenderOrOther();`
 - __Network:__
   - `IfNotEmail();` or `ShouldBeEmail();`
+- __Financial:__
+  - `ShouldBeCVV();`
 
 
 

@@ -42,7 +42,7 @@ namespace PowerUtils.Results.Validations.Tests.ShouldRules.Globalizations
                 &&
                 c.Code == ErrorCodes.INVALID
                 &&
-                 c.Description == $"The '{nameof(countryCode)}' is invalid country code. ISO2 formats are allowed"
+                c.Description == $"The '{nameof(countryCode)}' is invalid country code. ISO2 formats are allowed"
             );
         }
 
@@ -125,8 +125,6 @@ namespace PowerUtils.Results.Validations.Tests.ShouldRules.Globalizations
                  c.Description == $"The '{nameof(countryCode)}' is invalid country code. ISO2 formats are allowed"
             );
         }
-
-
 
         [Fact]
         public void ForbiddenError_ShouldBeISO2_ErrorCode()
