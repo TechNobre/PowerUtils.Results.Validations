@@ -183,6 +183,7 @@ var error4 = email2.ShouldBeEmail();
   - `IfNotEmail();` or `ShouldBeEmail();`
 - __Financial:__
   - `ShouldBeCVV();`
+  - `ShouldBeCardNumber();`
 
 
 
