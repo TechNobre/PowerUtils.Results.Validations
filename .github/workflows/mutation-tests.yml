@@ -15,6 +15,9 @@ on:
     types: [opened, reopened, edited, synchronize]
     branches:
       - main
+    paths:
+      - "src/**" # Only run when exists changes in source code
+      - "tests/**" # Only run when exists changes in tests code
 
 
 env:
