@@ -4,6 +4,13 @@ name: 'Mutation tests'
 on:
   workflow_dispatch: # To can dispatch manually
 
+  push: # First pipeline to run when deploy a new version
+    branches:
+      - main
+    paths:
+      - "src/**" # Only run when exists changes in source code
+      - "tests/**" # Only run when exists changes in tests code
+
   pull_request:
     types: [opened, reopened, edited, synchronize]
     branches:
@@ -43,15 +50,22 @@ jobs:
       run: dotnet build --configuration Release --no-restore
 
     - name: "Test for main version"
-      run: dotnet stryker -tp ${{ env.TEST_PROJECT_PATH }} --reporter dots --reporter dashboard --dashboard-api-key ${{ secrets.STRYKER_API_KEY }} --version main
+      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+      run: dotnet stryker -tp ${{ env.TEST_PROJECT_PATH }} --reporter progress --reporter dashboard --dashboard-api-key ${{ secrets.STRYKER_API_KEY }} --version main
 
     - name: "Get branch name"
+      if: github.event_name == 'pull_request'
       id: branch-name
       uses: tj-actions/branch-names@v6
 
+    - name: "Display branch details"
+      if: github.event_name == 'pull_request'
+      run: |
+        echo "Branch name is ${{ steps.branch-name.outputs.current_branch }}"
+
     - name: "Test for PR"
       if: github.event_name == 'pull_request'
-      run: dotnet stryker -tp ${{ env.TEST_PROJECT_PATH }} --reporter dots --reporter dashboard --dashboard-api-key ${{ secrets.STRYKER_API_KEY }} --version ${{ steps.branch-name.outputs.current_branch }}-${{ github.run_number }}
+      run: dotnet stryker -tp ${{ env.TEST_PROJECT_PATH }} --reporter progress --reporter dashboard --dashboard-api-key ${{ secrets.STRYKER_API_KEY }} --version ${{ steps.branch-name.outputs.current_branch }}-${{ github.run_number }}
 
     - name: "Comment PR"
       uses: actions/github-script@0.3.0
