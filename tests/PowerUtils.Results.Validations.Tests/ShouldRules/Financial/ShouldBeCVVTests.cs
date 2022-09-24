@@ -4,7 +4,7 @@ using Xunit;
 
 namespace PowerUtils.Results.Validations.Tests.ShouldRules.Financial
 {
-    public class ShouldBeCVV
+    public class ShouldBeCVVTests
     {
         [Fact]
         public void NULL_ShouldBeCVV_NoErrors()
@@ -81,7 +81,7 @@ namespace PowerUtils.Results.Validations.Tests.ShouldRules.Financial
         public void ForbiddenError_ShouldBeCVV_ErrorCode()
         {
             // Arrange
-            var countryCode = "cvv";
+            var card = "cvv";
 
             var expectedProperty = "fakeProp cvv";
             var expectedCode = "fakeCode cvv";
@@ -89,7 +89,7 @@ namespace PowerUtils.Results.Validations.Tests.ShouldRules.Financial
 
 
             // Act
-            var act = countryCode.Validate()
+            var act = card.Validate()
                 .ShouldBeCVV(
                     property => Error.Forbidden(
                         expectedProperty,
