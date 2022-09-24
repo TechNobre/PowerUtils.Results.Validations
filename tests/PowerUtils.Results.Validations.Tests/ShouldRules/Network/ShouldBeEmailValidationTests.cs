@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Linq;
+using FluentAssertions;
 using Xunit;
 
 namespace PowerUtils.Results.Validations.Tests.ShouldRules.Network
@@ -165,6 +166,41 @@ namespace PowerUtils.Results.Validations.Tests.ShouldRules.Network
                 c.Code == ErrorCodes.INVALID
                 &&
                 c.Description == $"The '{nameof(email)}' is not a valid email"
+            );
+        }
+
+        [Fact]
+        public void ForbiddenError_ShouldBeEmail_ErrorCode()
+        {
+            // Arrange
+            var clientEmail = "fake";
+
+            var expectedProperty = "fakeProp";
+            var expectedCode = "fakeCode";
+            var expectedDescription = $"Fake 👓 description > '{expectedProperty}'";
+
+
+            // Act
+            var act = clientEmail.Validate()
+                .ShouldBeEmail(property =>
+                    Error.Forbidden(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    )
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<ForbiddenError>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
             );
         }
     }

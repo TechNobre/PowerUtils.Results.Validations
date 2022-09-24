@@ -20,6 +20,7 @@
   - [Direct validations](#doc-direct-validations)
   - [Validations multiple properties](#doc-validations-multiple-properties)
   - [Multiple validations](#doc-multiple-validations)
+  - [Custom error](#doc-custom-error)
   - [Validations](#doc-validations)
   - [Conversions](#doc-conversions)
 - [Contribution](#contribution)
@@ -81,6 +82,20 @@ string address = "";
 var errors = address.Validate()
     .IfNullOrEmpty()
     .IfLongerThan(5);
+```
+
+
+### Custom error <a name="doc-custom-error"></a>
+```csharp
+var validation = dateOfBirth
+    .Validate()
+    .IfLessThanUtcToday(
+        property => Error.Forbidden(
+            "DateOfBirth",
+            "DateOfBirth.Invalid",
+            "Invalid date"
+        )
+    );
 ```
 
 

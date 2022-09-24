@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Linq;
+using FluentAssertions;
 using Xunit;
 
 namespace PowerUtils.Results.Validations.Tests.IfRules.Strings
@@ -91,6 +92,50 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Strings
 
             // Assert
             act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void ForbiddenError_IfLengthOutOfRange_ErrorCode()
+        {
+            // Arrange
+            var client = "faker";
+            var min = 40;
+            var max = 70;
+
+            var expectedProperty = "fakeProp fake range";
+            var expectedCode = "fakeCode fake range";
+            var expectedDescription = $"Fake description fake range > '{expectedProperty}'";
+
+
+            // Act
+            var act = client.Validate()
+                .IfLengthOutOfRange(
+                    min,
+                    max,
+                    property => Error.Forbidden(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    ),
+                    property => Error.Unauthorized(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    )
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<ForbiddenError>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
+            );
         }
     }
 }

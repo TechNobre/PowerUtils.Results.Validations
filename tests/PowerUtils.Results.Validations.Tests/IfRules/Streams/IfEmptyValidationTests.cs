@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using FluentAssertions;
 using Xunit;
 
@@ -61,6 +62,41 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Streams
 
             // Assert
             act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void ForbiddenError_IfEmpty_ErrorCode()
+        {
+            // Arrange
+            Stream val = new MemoryStream(Array.Empty<byte>());
+
+            var expectedProperty = "fakeProp Stream";
+            var expectedCode = "fakeCode Stream";
+            var expectedDescription = $"Fake description Stream > '{expectedProperty}'";
+
+
+            // Act
+            var act = val.Validate()
+                .IfEmpty(property =>
+                    Error.Forbidden(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    )
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<ForbiddenError>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
+            );
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Linq;
+using FluentAssertions;
 using Xunit;
 
 namespace PowerUtils.Results.Validations.Tests.IfRules.Numerics
@@ -140,6 +141,80 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Numerics
 
             // Assert
             act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void UnauthorizedError_IfLessThan_ErrorCode()
+        {
+            // Arrange
+            float quantity = -65460;
+            float min = -425;
+
+            var expectedProperty = "fakeProp";
+            var expectedCode = "fakeCode";
+            var expectedDescription = $"Fake description > '{expectedProperty}'";
+
+
+            // Act
+            var act = quantity.Validate()
+                .IfLessThan(
+                    min,
+                    property => Error.Unauthorized(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    )
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<UnauthorizedError>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
+            );
+        }
+
+        [Fact]
+        public void Error_IfLessThanNullable_ErrorCode()
+        {
+            // Arrange
+            decimal? quantity = -650;
+            decimal min = 425;
+
+            var expectedProperty = "fakeProp";
+            var expectedCode = "fakeCode";
+            var expectedDescription = $"Fake description > '{expectedProperty}'";
+
+
+            // Act
+            var act = quantity.Validate()
+                .IfLessThan(
+                    min,
+                    property => Error.Failure(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    )
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<Error>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
+            );
         }
     }
 }

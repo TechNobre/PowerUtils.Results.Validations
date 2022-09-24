@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Linq;
+using FluentAssertions;
 using Xunit;
 
 namespace PowerUtils.Results.Validations.Tests.IfRules.Numerics
@@ -163,6 +164,94 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Numerics
 
             // Assert
             act.Errors.Should().HaveCount(0);
+        }
+
+
+        [Fact]
+        public void ForbiddenError_IfOutOfRange_ErrorCode()
+        {
+            // Arrange
+            double quantity = 878979;
+            double min = 5;
+            double max = 155;
+
+            var expectedProperty = "fakeProp";
+            var expectedCode = "fakeCode";
+            var expectedDescription = $"Fake description > '{expectedProperty}'";
+
+
+            // Act
+            var act = quantity.Validate()
+                .IfOutOfRange(
+                    min,
+                    max,
+                    property => Error.Forbidden(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    ),
+                    property => Error.Forbidden(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    )
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<ForbiddenError>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
+            );
+        }
+        [Fact]
+        public void ValidationError_IfOutOfRangeNullable_ErrorCode()
+        {
+            // Arrange
+            decimal? quantity = 42;
+            decimal min = -5;
+            decimal max = -3155;
+
+            var expectedProperty = "fakeProp";
+            var expectedCode = "fakeCode";
+            var expectedDescription = $"Fake description > '{expectedProperty}'";
+
+
+            // Act
+            var act = quantity.Validate()
+                .IfOutOfRange(
+                    min,
+                    max,
+                    property => Error.Validation(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    ),
+                    property => Error.Validation(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    )
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<ValidationError>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
+            );
         }
     }
 }

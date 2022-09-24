@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Linq;
+using FluentAssertions;
 using Xunit;
 
 namespace PowerUtils.Results.Validations.Tests.IfRules.Globalizations
@@ -147,6 +148,89 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Globalizations
 
             // Assert
             act.Errors.Should().HaveCount(0);
+        }
+
+
+
+        [Fact]
+        public void ForbiddenError_IfLongitudeOutOfRange_ErrorCode()
+        {
+            // Arrange
+            var degree = 180.1m;
+
+            var expectedProperty = "fakeProp coor";
+            var expectedCode = "fakeCode coor";
+            var expectedDescription = $"Fake description coor > '{expectedProperty}'";
+
+
+            // Act
+            var act = degree.Validate()
+                .IfLongitudeOutOfRange(
+                    property => Error.Forbidden(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    ),
+                    property => Error.Forbidden(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    )
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<ForbiddenError>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
+            );
+        }
+
+
+        [Fact]
+        public void ForbiddenError_IfLongitudeOutOfRangeNullable_ErrorCode()
+        {
+            // Arrange
+            double? degree = 180.1;
+
+            var expectedProperty = "fakeProp lat";
+            var expectedCode = "fakeCode lat";
+            var expectedDescription = $"Fake description lat > '{expectedProperty}'";
+
+
+            // Act
+            var act = degree.Validate()
+                .IfLongitudeOutOfRange(
+                    property => Error.Forbidden(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    ),
+                    property => Error.Forbidden(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    )
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<ForbiddenError>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
+            );
         }
     }
 }

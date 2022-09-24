@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Linq;
+using FluentAssertions;
 using Xunit;
 
 namespace PowerUtils.Results.Validations.Tests.IfRules.Strings
@@ -83,6 +84,41 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Strings
 
             // Assert
             act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void ValidationError_IfNullOrEmpty_ErrorCode()
+        {
+            // Arrange
+            var t4e = "";
+
+            var expectedProperty = "fakeProp fake";
+            var expectedCode = "fakeCode fake";
+            var expectedDescription = $"Fake description fake > '{expectedProperty}'";
+
+
+            // Act
+            var act = t4e.Validate()
+                .IfNullOrEmpty(
+                    property => Error.Validation(
+                        expectedProperty,
+                        expectedCode,
+                        expectedDescription
+                    )
+                );
+
+
+            // Assert
+            act.Errors.Should().HaveCount(1);
+            act.Errors.First().Should().BeOfType<ValidationError>();
+
+            act.Errors.Should().OnlyContain(c =>
+                c.Property == expectedProperty
+                &&
+                c.Code == expectedCode
+                &&
+                c.Description == expectedDescription
+            );
         }
     }
 }
