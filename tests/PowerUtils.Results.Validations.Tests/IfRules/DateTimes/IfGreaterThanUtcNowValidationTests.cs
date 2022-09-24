@@ -48,6 +48,22 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.DateTimes
         }
 
         [Fact]
+        public void Equals_IfGreaterThanUtcNowNullable_NoErrors()
+        {
+            // Arrange
+            DateTime? now = DateTime.UtcNow;
+
+
+            // Act
+            var act = now.Validate()
+                .IfGreaterThanUtcNow();
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
         public void Null_IfGreaterThanUtcNowNullable_NoErrors()
         {
             // Arrange

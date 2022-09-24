@@ -49,6 +49,23 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.DateTimes
             act.Errors.Should().HaveCount(0);
         }
 
+        [Fact]
+        public void Equals_IfGreaterThan_NoErrors()
+        {
+            // Arrange
+            var dateOfBirth = new DateTime(1980, 02, 29);
+            var max = new DateTime(1980, 02, 29);
+
+
+            // Act
+            var act = dateOfBirth.Validate()
+                .IfGreaterThan(max);
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
 
 
         [Fact]

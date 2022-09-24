@@ -42,6 +42,23 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Collections
         }
 
         [Fact]
+        public void EqualsMax_IfCountGreaterThan_NoErrors()
+        {
+            // Arrange
+            IEnumerable<string> prodList = new string[] { "fake", "fake2" };
+            var max = 2;
+
+
+            // Act
+            var act = prodList.Validate()
+                .IfCountGreaterThan(max);
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
         public void ManyItems_IfCountGreaterThan_OneError()
         {
             // Arrange

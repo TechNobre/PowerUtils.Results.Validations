@@ -24,6 +24,38 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.DateTimes
         }
 
         [Fact]
+        public void Equals_IfLessThanUtcToday_NoErrors()
+        {
+            // Arrange
+            var dateOfBirth = DateTime.UtcNow.Date;
+
+
+            // Act
+            var act = dateOfBirth.Validate()
+                .IfLessThanUtcToday();
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void Equals_IfLessThanUtcTodayNullable_NoErrors()
+        {
+            // Arrange
+            DateTime? dateOfBirth = DateTime.UtcNow.Date;
+
+
+            // Act
+            var act = dateOfBirth.Validate()
+                .IfLessThanUtcToday();
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
         public void UtcNowMinus1Day_IfLessThanUtcToday_OneError()
         {
             // Arrange

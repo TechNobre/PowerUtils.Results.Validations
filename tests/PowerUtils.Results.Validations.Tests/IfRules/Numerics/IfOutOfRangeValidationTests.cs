@@ -59,7 +59,43 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Numerics
         }
 
         [Fact]
-        public void EqualsNumber_IfOutOfRange_NoErrors()
+        public void EqualsMax_IfOutOfRange_NoErrors()
+        {
+            // Arrange
+            var quantity = 128;
+            var min = -127;
+            var max = 128;
+
+
+            // Act
+            var act = quantity.Validate()
+                .IfOutOfRange(min, max);
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void EqualsMax_IfOutOfRangeNullable_NoErrors()
+        {
+            // Arrange
+            double? quantity = 1;
+            double min = 0;
+            double max = 1;
+
+
+            // Act
+            var act = quantity.Validate()
+                .IfOutOfRange(min, max);
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void EqualsMin_IfOutOfRange_NoErrors()
         {
             // Arrange
             var quantity = 4;

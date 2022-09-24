@@ -61,7 +61,7 @@ namespace PowerUtils.Results
                     }
 
                 default:
-                    throw new InvalidCastException($"The type '{type}'");
+                    throw new InvalidCastException($"Invalid type '{type}'");
             }
         }
     }

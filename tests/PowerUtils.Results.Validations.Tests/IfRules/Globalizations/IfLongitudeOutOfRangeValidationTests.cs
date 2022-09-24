@@ -71,6 +71,70 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Globalizations
         }
 
         [Fact]
+        public void EqualsMin_IfLongitudeOutOfRange_NoErrors()
+        {
+            // Arrange
+            decimal degree = -180;
+
+
+            // Act
+            var act = degree.Validate()
+                .IfLongitudeOutOfRange();
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void EqualsMax_IfLongitudeOutOfRange_NoErrors()
+        {
+            // Arrange
+            decimal degree = 180;
+
+
+            // Act
+            var act = degree.Validate()
+                .IfLongitudeOutOfRange();
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void EqualsMin_IfLongitudeOutOfRangeNullable_NoErrors()
+        {
+            // Arrange
+            decimal? degree = -180;
+
+
+            // Act
+            var act = degree.Validate()
+                .IfLongitudeOutOfRange();
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void EqualsMax_IfLongitudeOutOfRangeNullable_NoErrors()
+        {
+            // Arrange
+            decimal? degree = 180;
+
+
+            // Act
+            var act = degree.Validate()
+                .IfLongitudeOutOfRange();
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
         public void Small_IfLongitudeOutOfRangeNullable_OneError()
         {
             // Arrange

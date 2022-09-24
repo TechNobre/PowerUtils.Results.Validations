@@ -69,6 +69,24 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Collections
         }
 
         [Fact]
+        public void EqualsMin_IfCountLessThan_NoErrors()
+        {
+            // Arrange
+            var prodList = new string[] { "fake" };
+            var min = 1;
+
+
+
+            // Act
+            var act = prodList.Validate()
+                .IfCountLessThan(min);
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
         public void SomeItemsInIEnumerable_IfCountLessThan_NoErrors()
         {
             // Arrange

@@ -179,7 +179,11 @@ namespace PowerUtils.Results.Validations.Tests.Conversions.Numerics
 
 
             // Assert
-            act.Should().BeOfType<InvalidCastException>();
+            act.Should()
+                .BeOfType<InvalidCastException>();
+
+            act.Message.Should()
+                .Be("Invalid type 'String'");
         }
     }
 }

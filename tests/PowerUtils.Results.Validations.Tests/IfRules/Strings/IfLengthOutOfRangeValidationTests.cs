@@ -25,6 +25,44 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Strings
         }
 
         [Fact]
+        public void EqualsMin_IfShorterThan_NoErrors()
+        {
+            // Arrange
+            var client = "Loren";
+            var min = 5;
+            var max = 7;
+
+
+
+            // Act
+            var act = client.Validate()
+                .IfLengthOutOfRange(min, max);
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
+        public void EqualsMax_IfShorterThan_NoErrors()
+        {
+            // Arrange
+            var client = "LorenText";
+            var min = 5;
+            var max = 9;
+
+
+
+            // Act
+            var act = client.Validate()
+                .IfLengthOutOfRange(min, max);
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+        }
+
+        [Fact]
         public void Short_IfLengthOutOfRange_OneMinError()
         {
             // Arrange
