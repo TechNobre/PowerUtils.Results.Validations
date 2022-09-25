@@ -184,6 +184,7 @@ var error4 = email2.ShouldBeEmail();
 - __Financial:__
   - `ShouldBeCVV();`
   - `ShouldBeCardNumber();`
+  - `ShouldBeValidCardExpiryDate();`
 
 
 
