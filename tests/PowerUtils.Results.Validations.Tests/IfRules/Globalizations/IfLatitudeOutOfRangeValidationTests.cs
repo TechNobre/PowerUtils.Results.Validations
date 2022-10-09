@@ -24,7 +24,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Globalizations
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(degree)
                 &&
-                c.Code == ErrorCodes.MIN_LATITUDE
+                c.Code == ErrorFactory.MIN_LATITUDE
                 &&
                 c.Description == $"The '{nameof(degree)}' is invalid. The minimum latitude is -90"
             );
@@ -48,7 +48,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Globalizations
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(degree)
                 &&
-                c.Code == ErrorCodes.MAX_LATITUDE
+                c.Code == ErrorFactory.MAX_LATITUDE
                 &&
                  c.Description == $"The '{nameof(degree)}' is invalid. The maximum latitude is 90"
             );
@@ -152,7 +152,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Globalizations
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(degree)
                 &&
-                c.Code == ErrorCodes.MIN_LATITUDE
+                c.Code == ErrorFactory.MIN_LATITUDE
                 &&
                 c.Description == $"The '{nameof(degree)}' is invalid. The minimum latitude is -90"
             );
@@ -176,7 +176,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Globalizations
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(degree)
                 &&
-                c.Code == ErrorCodes.MAX_LATITUDE
+                c.Code == ErrorFactory.MAX_LATITUDE
                 &&
                  c.Description == $"The '{nameof(degree)}' is invalid. The maximum latitude is 90"
             );

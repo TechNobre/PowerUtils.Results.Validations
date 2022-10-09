@@ -39,7 +39,7 @@ namespace PowerUtils.Results
         ) => value.IfNotEmail(
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.INVALID,
+                Errors.Codes.INVALID,
                 $"The '{propertyName}' is not a valid email"
             ),
             propertyName

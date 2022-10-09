@@ -41,7 +41,7 @@ namespace PowerUtils.Results
             max,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.CreateDateTimeMax(max),
+                ErrorFactory.CreateDateTimeMax(max),
                 $"The '{propertyName}' is very future. The maximum is {max:yyyy-MM-dd HH:mm:ss}"
             ),
             propertyName
@@ -95,7 +95,7 @@ namespace PowerUtils.Results
             max,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.CreateDateTimeMax(max),
+                ErrorFactory.CreateDateTimeMax(max),
                 $"The '{propertyName}' is very future. The maximum is {max:yyyy-MM-dd HH:mm:ss}"
             ),
             propertyName
@@ -150,7 +150,7 @@ namespace PowerUtils.Results
             min,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.CreateDateTimeMin(min),
+                ErrorFactory.CreateDateTimeMin(min),
                 $"The '{propertyName}' is very old. The minimum is {min:yyyy-MM-dd HH:mm:ss}"
             ),
             propertyName
@@ -204,7 +204,7 @@ namespace PowerUtils.Results
             min,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.CreateDateTimeMin(min),
+                ErrorFactory.CreateDateTimeMin(min),
                 $"The '{propertyName}' is very old. The minimum is {min:yyyy-MM-dd HH:mm:ss}"
             ),
             propertyName
@@ -267,12 +267,12 @@ namespace PowerUtils.Results
             max,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.CreateDateTimeMin(min),
+                ErrorFactory.CreateDateTimeMin(min),
                 $"The '{propertyName}' is very old. The minimum is {min:yyyy-MM-dd HH:mm:ss}"
             ),
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.CreateDateTimeMax(max),
+                ErrorFactory.CreateDateTimeMax(max),
                 $"The '{propertyName}' is very future. The maximum is {max:yyyy-MM-dd HH:mm:ss}"
             ),
             propertyName
@@ -343,12 +343,12 @@ namespace PowerUtils.Results
             max,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.CreateDateTimeMin(min),
+                ErrorFactory.CreateDateTimeMin(min),
                 $"The '{propertyName}' is very old. The minimum is {min:yyyy-MM-dd HH:mm:ss}"
             ),
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.CreateDateTimeMax(max),
+                ErrorFactory.CreateDateTimeMax(max),
                 $"The '{propertyName}' is very future. The maximum is {max:yyyy-MM-dd HH:mm:ss}"
             ),
             propertyName
@@ -405,7 +405,7 @@ namespace PowerUtils.Results
             otherValue,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.INVALID,
+                Errors.Codes.INVALID,
                 $"The '{propertyName}' cannot be equal to '{otherValue}'"
             ),
             propertyName
@@ -459,7 +459,7 @@ namespace PowerUtils.Results
             otherValue,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.INVALID,
+                Errors.Codes.INVALID,
                 $"The '{propertyName}' cannot be equal to '{otherValue}'"
             ),
             propertyName
@@ -510,7 +510,7 @@ namespace PowerUtils.Results
         ) => value.IfGreaterThanUtcNow(
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.MAX_DATETIME_UTCNOW,
+                ErrorFactory.MAX_DATETIME_UTCNOW,
                 $"The '{propertyName}' is very future. The maximum is UTC NOW"
             ),
             propertyName
@@ -564,7 +564,7 @@ namespace PowerUtils.Results
         ) => value.IfGreaterThanUtcNow(
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.MAX_DATETIME_UTCNOW,
+                ErrorFactory.MAX_DATETIME_UTCNOW,
                 $"The '{propertyName}' is very future. The maximum is UTC NOW"
             ),
             propertyName

@@ -35,7 +35,7 @@ namespace PowerUtils.Results
             convertible.AddError(
                 Error.Validation(
                     convertible.Name,
-                    ErrorCodes.INVALID,
+                    Errors.Codes.INVALID,
                     $"The '{validatable.Name}' is an invalid 'DateTime'. The supported format is '{format}'"
                 )
             );
@@ -84,7 +84,7 @@ namespace PowerUtils.Results
             convertible.AddError(
                 Error.Validation(
                     convertible.Name,
-                    ErrorCodes.INVALID,
+                    Errors.Codes.INVALID,
                     $"The '{validatable.Name}' is an invalid 'DateTime'. The supported format is '{format}'"
                 )
             );
@@ -125,7 +125,7 @@ namespace PowerUtils.Results
             convertible.AddError(
                 Error.Validation(
                     convertible.Name,
-                    ErrorCodes.INVALID,
+                    Errors.Codes.INVALID,
                     $"The '{validatable.Name}' is an invalid 'Date'. The supported format is '{format}'"
                 )
             );
@@ -174,7 +174,7 @@ namespace PowerUtils.Results
             convertible.AddError(
                 Error.Validation(
                     convertible.Name,
-                    ErrorCodes.INVALID,
+                    Errors.Codes.INVALID,
                     $"The '{validatable.Name}' is an invalid 'Date'. The supported format is '{format}'"
                 )
             );
@@ -214,7 +214,7 @@ namespace PowerUtils.Results
             convertible.AddError(
                 Error.Validation(
                     convertible.Name,
-                    ErrorCodes.INVALID,
+                    Errors.Codes.INVALID,
                     $"The '{validatable.Name}' is an invalid 'Time'. The supported format is '{format}'"
                 )
             );
@@ -263,7 +263,7 @@ namespace PowerUtils.Results
             convertible.AddError(
                 Error.Validation(
                     convertible.Name,
-                    ErrorCodes.INVALID,
+                    Errors.Codes.INVALID,
                     $"The '{validatable.Name}' is an invalid 'Time'. The supported format is '{format}'"
                 )
             );

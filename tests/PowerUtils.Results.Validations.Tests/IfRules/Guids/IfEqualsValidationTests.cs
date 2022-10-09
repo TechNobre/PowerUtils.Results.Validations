@@ -43,7 +43,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Guids
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(id)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(id)}' cannot be equal to '{otherValue}'"
             );
@@ -107,7 +107,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Guids
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(id)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(id)}' cannot be equal to '{otherValue}'"
             );
@@ -153,7 +153,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Guids
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(id)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(id)}' cannot be equal to '{otherValue}'"
             );
@@ -196,7 +196,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Guids
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(id)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(id)}' cannot be equal to '{otherValue}'"
             );
@@ -221,7 +221,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Guids
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(id)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(id)}' cannot be equal to '{otherValue}'"
             );

@@ -40,7 +40,7 @@ namespace PowerUtils.Results.Validations.Tests.ShouldRules.Network
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(clientEmail)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(clientEmail)}' is not a valid email"
             );
@@ -64,7 +64,7 @@ namespace PowerUtils.Results.Validations.Tests.ShouldRules.Network
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(clientEmail)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(clientEmail)}' is not a valid email"
             );
@@ -88,7 +88,7 @@ namespace PowerUtils.Results.Validations.Tests.ShouldRules.Network
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(clientEmail)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(clientEmail)}' is not a valid email"
             );
@@ -163,7 +163,7 @@ namespace PowerUtils.Results.Validations.Tests.ShouldRules.Network
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(email)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(email)}' is not a valid email"
             );

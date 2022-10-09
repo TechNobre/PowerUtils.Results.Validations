@@ -31,7 +31,7 @@ namespace PowerUtils.Results
         ) => value.IfEmpty(
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.REQUIRED,
+                Errors.Codes.REQUIRED,
                 $"The '{propertyName}' cannot be empty"
             ),
             propertyName
@@ -80,7 +80,7 @@ namespace PowerUtils.Results
             otherValue,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.INVALID,
+                Errors.Codes.INVALID,
                 $"The '{propertyName}' cannot be equal to '{otherValue}'"
             ),
             propertyName
@@ -134,7 +134,7 @@ namespace PowerUtils.Results
             otherValue,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.INVALID,
+                Errors.Codes.INVALID,
                 $"The '{propertyName}' cannot be equal to '{otherValue}'"
             ),
             propertyName
@@ -188,7 +188,7 @@ namespace PowerUtils.Results
             otherValue,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.INVALID,
+                Errors.Codes.INVALID,
                 $"The '{propertyName}' cannot be equal to '{otherValue}'"
             ),
             propertyName
@@ -242,7 +242,7 @@ namespace PowerUtils.Results
             otherValue,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.INVALID,
+                Errors.Codes.INVALID,
                 $"The '{propertyName}' cannot be different to '{otherValue}'"
             ),
             propertyName
@@ -296,7 +296,7 @@ namespace PowerUtils.Results
             otherValue,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.INVALID,
+                Errors.Codes.INVALID,
                 $"The '{propertyName}' cannot be different to '{otherValue}'"
             ),
             propertyName
@@ -350,7 +350,7 @@ namespace PowerUtils.Results
             otherValue,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.INVALID,
+                Errors.Codes.INVALID,
                 $"The '{propertyName}' cannot be different to '{otherValue}'"
             ),
             propertyName

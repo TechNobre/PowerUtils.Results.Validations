@@ -25,7 +25,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Strings
             errors.Should().OnlyContain(c =>
                 c.Property == nameof(name)
                 &&
-                c.Code == ErrorCodes.REQUIRED
+                c.Code == Errors.Codes.REQUIRED
                 &&
                 c.Description == $"The '{nameof(name)}' cannot be null"
             );

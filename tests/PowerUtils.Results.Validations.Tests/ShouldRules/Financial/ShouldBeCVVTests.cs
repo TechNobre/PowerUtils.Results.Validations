@@ -52,7 +52,7 @@ namespace PowerUtils.Results.Validations.Tests.ShouldRules.Financial
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(cvv)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(cvv)}' is an invalid CVV format"
             );

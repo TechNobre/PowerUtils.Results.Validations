@@ -25,7 +25,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Streams
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(val)
                 &&
-                c.Code == ErrorCodes.REQUIRED
+                c.Code == Errors.Codes.REQUIRED
                 &&
                 c.Description == $"The '{nameof(val)}' cannot be null"
             );
