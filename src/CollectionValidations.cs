@@ -237,6 +237,85 @@ namespace PowerUtils.Results
 
 
 
+        /// <summary>
+        /// Returns an <see cref="IError" /> if <paramref name="value"/> out of range
+        /// </summary>
+        public static IError IfCountOutOfRange<TValue>(
+            this TValue value,
+            int min,
+            int max,
+            Func<IProperty<TValue>, IError> onErrorMin,
+            Func<IProperty<TValue>, IError> onErrorMax,
+            [CallerArgumentExpression("value")] string propertyName = null
+        ) where TValue : IEnumerable
+        {
+            if(value is null)
+            {
+                return null;
+            }
+
+            if(value._itemCounter() < min)
+            {
+                return onErrorMin(new Property<TValue>(value, propertyName));
+            }
+
+            if(value._itemCounter() > max)
+            {
+                return onErrorMax(new Property<TValue>(value, propertyName));
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Returns an <see cref="IError" /> if <paramref name="value"/> out of range. Error code 'MIN:{X}' or 'MAX:{X}'
+        /// </summary>
+        public static IError IfCountOutOfRange<TValue>(
+            this TValue value,
+            int min,
+            int max,
+            [CallerArgumentExpression("value")] string propertyName = null
+        ) where TValue : IEnumerable
+            => value.IfCountOutOfRange(
+                min,
+                max,
+                (_) => Error.Validation(
+                    propertyName,
+                    ErrorCodes.CreateMin(min),
+                    $"The '{propertyName}' contains few items. The minimum is {min}"
+                ),
+                (_) => Error.Validation(
+                    propertyName,
+                    ErrorCodes.CreateMax(max),
+                    $"The '{propertyName}' contains a lot of items. The maximum is {max}"
+                ),
+                propertyName
+            );
+
+        /// <summary>
+        /// Validates if <paramref name="validatable.Value"/> out of range and adds an error code 'MIN:{X}' or 'MAX:{X}' in error list
+        /// </summary>
+        public static IValidatable<TValue> IfCountOutOfRange<TValue>(
+            this IValidatable<TValue> validatable,
+            int min,
+            int max
+        ) where TValue : IEnumerable
+            => validatable.Validator(property => property.Value.IfCountOutOfRange(min, max, property.Name));
+
+        /// <summary>
+        /// Validates if <paramref name="validatable.Value"/> out of range and adds an error
+        /// </summary>
+        public static IValidatable<TValue> IfCountOutOfRange<TValue>(
+            this IValidatable<TValue> validatable,
+            int min,
+            int max,
+            Func<IProperty<TValue>, IError> onErrorMin,
+            Func<IProperty<TValue>, IError> onErrorMax
+        ) where TValue : IEnumerable
+            => validatable.Validator(property => property.Value.IfCountOutOfRange(min, max, onErrorMin, onErrorMax));
+
+
+
         private static int _itemCounter(this IEnumerable value)
         {
             if(value is ICollection collection)

@@ -132,6 +132,7 @@ var error4 = email2.ShouldBeEmail();
   - `IfNullOrEmpty();`
   - `IfCountGreaterThan();`
   - `IfCountLessThan();`
+  - `IfCountOutOfRange();`
 - __Globalization:__
   - `IfLatitudeOutOfRange();`
   - `IfLongitudeOutOfRange();`
