@@ -5,6 +5,10 @@ namespace PowerUtils.Results
 {
     public static class DateTimeValidations
     {
+        public const string MIN_DATETIME_UTCTODAY = "MIN:DATETIME_UTCNOW";
+        public const string MAX_DATETIME_UTCTODAY = "MAX:DATETIME_UTCTODAY";
+
+
         /// <summary>
         /// Returns an <see cref="IError" /> if <paramref name="value"/> is greater than
         /// </summary>
@@ -24,7 +28,7 @@ namespace PowerUtils.Results
         }
 
         /// <summary>
-        /// Returns an <see cref="IError" /> if <paramref name="value"/> is greater than. Error code 'MAX:{yyyy-MM-dd}'
+        /// Returns an <see cref="IError" /> if <paramref name="value"/> is greater than. Error code 'MAX:{yyyy-MM-dd HH:mm:ss}'
         /// </summary>
         public static IError IfGreaterThan(
             this DateTime value,
@@ -34,14 +38,14 @@ namespace PowerUtils.Results
             max,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.CreateDateMax(max),
-                $"The '{propertyName}' is very future. The maximum is {max:yyyy-MM-dd}" // TODO: fix this
+                ErrorCodes.CreateDateTimeMax(max),
+                $"The '{propertyName}' is very future. The maximum is {max:yyyy-MM-dd HH:mm:ss}"
             ),
             propertyName
         );
 
         /// <summary>
-        /// Validates if <paramref name="validatable.Value"/> is greater than and adds an error code 'MAX:{yyyy-MM-dd}' in error list
+        /// Validates if <paramref name="validatable.Value"/> is greater than and adds an error code 'MAX:{yyyy-MM-dd HH:mm:ss}' in error list
         /// </summary>
         public static IValidatable<DateTime> IfGreaterThan(
             this IValidatable<DateTime> validatable,
@@ -78,7 +82,7 @@ namespace PowerUtils.Results
         }
 
         /// <summary>
-        /// Returns an <see cref="IError" /> if <paramref name="value"/> is greater than. Error code 'MAX:{yyyy-MM-dd}'
+        /// Returns an <see cref="IError" /> if <paramref name="value"/> is greater than. Error code 'MAX:{yyyy-MM-dd HH:mm:ss}'
         /// </summary>
         public static IError IfGreaterThan(
             this DateTime? value,
@@ -88,14 +92,14 @@ namespace PowerUtils.Results
             max,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.CreateDateMax(max),
-                $"The '{propertyName}' is very future. The maximum is {max:yyyy-MM-dd}"
+                ErrorCodes.CreateDateTimeMax(max),
+                $"The '{propertyName}' is very future. The maximum is {max:yyyy-MM-dd HH:mm:ss}"
             ),
             propertyName
         );
 
         /// <summary>
-        /// Validates if <paramref name="validatable.Value"/> is greater than and adds an error code 'MAX:{yyyy-MM-dd}' in error list
+        /// Validates if <paramref name="validatable.Value"/> is greater than and adds an error code 'MAX:{yyyy-MM-dd HH:mm:ss}' in error list
         /// </summary>
         public static IValidatable<DateTime?> IfGreaterThan(
             this IValidatable<DateTime?> validatable,
@@ -133,7 +137,7 @@ namespace PowerUtils.Results
         }
 
         /// <summary>
-        /// Returns an <see cref="IError" /> if <paramref name="value"/> is less than. Error code 'MIN:{yyyy-MM-dd}'
+        /// Returns an <see cref="IError" /> if <paramref name="value"/> is less than. Error code 'MIN:{yyyy-MM-dd HH:mm:ss}'
         /// </summary>
         public static IError IfLessThan(
             this DateTime value,
@@ -143,14 +147,14 @@ namespace PowerUtils.Results
             min,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.CreateDateMin(min),
-                $"The '{propertyName}' is very old. The minimum is {min:yyyy-MM-dd}"
+                ErrorCodes.CreateDateTimeMin(min),
+                $"The '{propertyName}' is very old. The minimum is {min:yyyy-MM-dd HH:mm:ss}"
             ),
             propertyName
         );
 
         /// <summary>
-        /// Validates if <paramref name="validatable.Value"/> is less than and adds an error code 'MAX:{yyyy-MM-dd}' in error list
+        /// Validates if <paramref name="validatable.Value"/> is less than and adds an error code 'MAX:{yyyy-MM-dd HH:mm:ss}' in error list
         /// </summary>
         public static IValidatable<DateTime> IfLessThan(
             this IValidatable<DateTime> validatable,
@@ -187,7 +191,7 @@ namespace PowerUtils.Results
         }
 
         /// <summary>
-        /// Returns an <see cref="IError" /> if <paramref name="value"/> is less than. Error code 'MIN:{yyyy-MM-dd}'
+        /// Returns an <see cref="IError" /> if <paramref name="value"/> is less than. Error code 'MIN:{yyyy-MM-dd HH:mm:ss}'
         /// </summary>
         public static IError IfLessThan(
             this DateTime? value,
@@ -197,14 +201,14 @@ namespace PowerUtils.Results
             min,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.CreateDateMin(min),
-                $"The '{propertyName}' is very old. The minimum is {min:yyyy-MM-dd}"
+                ErrorCodes.CreateDateTimeMin(min),
+                $"The '{propertyName}' is very old. The minimum is {min:yyyy-MM-dd HH:mm:ss}"
             ),
             propertyName
         );
 
         /// <summary>
-        /// Validates if <paramref name="validatable.Value"/> is less than and adds an error code 'MAX:{yyyy-MM-dd}' in error list
+        /// Validates if <paramref name="validatable.Value"/> is less than and adds an error code 'MAX:{yyyy-MM-dd HH:mm:ss}' in error list
         /// </summary>
         public static IValidatable<DateTime?> IfLessThan(
             this IValidatable<DateTime?> validatable,
@@ -260,19 +264,19 @@ namespace PowerUtils.Results
             max,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.CreateDateMin(min),
-                $"The '{propertyName}' is very old. The minimum is {min:yyyy-MM-dd}"
+                ErrorCodes.CreateDateTimeMin(min),
+                $"The '{propertyName}' is very old. The minimum is {min:yyyy-MM-dd HH:mm:ss}"
             ),
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.CreateDateMax(max),
-                $"The '{propertyName}' is very future. The maximum is {max:yyyy-MM-dd}"
+                ErrorCodes.CreateDateTimeMax(max),
+                $"The '{propertyName}' is very future. The maximum is {max:yyyy-MM-dd HH:mm:ss}"
             ),
             propertyName
         );
 
         /// <summary>
-        /// Validates if <paramref name="validatable.Value"/> out of range and adds an error code 'MIN:{yyyy-MM-dd} or MAX:{yyyy-MM-dd}' in error list
+        /// Validates if <paramref name="validatable.Value"/> out of range and adds an error code 'MIN:{yyyy-MM-dd HH:mm:ss} or MAX:{yyyy-MM-dd HH:mm:ss}' in error list
         /// </summary>
         public static IValidatable<DateTime> IfOutOfRange(
             this IValidatable<DateTime> validatable,
@@ -336,19 +340,19 @@ namespace PowerUtils.Results
             max,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.CreateDateMin(min),
-                $"The '{propertyName}' is very old. The minimum is {min:yyyy-MM-dd}"
+                ErrorCodes.CreateDateTimeMin(min),
+                $"The '{propertyName}' is very old. The minimum is {min:yyyy-MM-dd HH:mm:ss}"
             ),
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.CreateDateMax(max),
-                $"The '{propertyName}' is very future. The maximum is {max:yyyy-MM-dd}"
+                ErrorCodes.CreateDateTimeMax(max),
+                $"The '{propertyName}' is very future. The maximum is {max:yyyy-MM-dd HH:mm:ss}"
             ),
             propertyName
         );
 
         /// <summary>
-        /// Validates if <paramref name="validatable.Value"/> out of range and adds an error code 'MIN:{yyyy-MM-dd} or MAX:{yyyy-MM-dd}' in error list
+        /// Validates if <paramref name="validatable.Value"/> out of range and adds an error code 'MIN:{yyyy-MM-dd HH:mm:ss} or MAX:{yyyy-MM-dd HH:mm:ss}' in error list
         /// </summary>
         public static IValidatable<DateTime?> IfOutOfRange(
             this IValidatable<DateTime?> validatable,
@@ -357,7 +361,7 @@ namespace PowerUtils.Results
         ) => validatable.Validator(property => property.Value.IfOutOfRange(min, max, property.Name));
 
         /// <summary>
-        /// Validates if <paramref name="validatable.Value"/> out of range and adds an error code 'MIN:{yyyy-MM-dd} or MAX:{yyyy-MM-dd}' in error list
+        /// Validates if <paramref name="validatable.Value"/> out of range and adds an error code 'MIN:{yyyy-MM-dd HH:mm:ss} or MAX:{yyyy-MM-dd HH:mm:ss}' in error list
         /// </summary>
         public static IValidatable<DateTime?> IfOutOfRange(
             this IValidatable<DateTime?> validatable,
@@ -605,7 +609,7 @@ namespace PowerUtils.Results
         ) => value.IfGreaterThanUtcToday(
             (_) => Error.Validation(
                 propertyName,
-                "MAX:DATETIME_UTCTODAY", // TODO: create constain
+                MAX_DATETIME_UTCTODAY,
                 $"The '{propertyName}' is very future. The maximum is UTC TODAY"
             ),
             propertyName
@@ -658,7 +662,7 @@ namespace PowerUtils.Results
         ) => value.IfGreaterThanUtcToday(
             (_) => Error.Validation(
                 propertyName,
-                "MAX:DATETIME_UTCTODAY",
+                MAX_DATETIME_UTCTODAY,
                 $"The '{propertyName}' is very future. The maximum is UTC TODAY"
             ),
             propertyName
@@ -706,7 +710,7 @@ namespace PowerUtils.Results
         ) => value.IfLessThanUtcNow(
             (_) => Error.Validation(
                 propertyName,
-                "MIN:DATETIME_UTCNOW",
+                MIN_DATETIME_UTCTODAY,
                 $"The '{propertyName}' is very old. The minimum is UTC NOW"
             ),
             propertyName
@@ -760,7 +764,7 @@ namespace PowerUtils.Results
         ) => value.IfLessThanUtcNow(
             (_) => Error.Validation(
                 propertyName,
-                "MIN:DATETIME_UTCNOW",
+                MIN_DATETIME_UTCTODAY,
                 $"The '{propertyName}' is very old. The minimum is UTC NOW"
             ),
             propertyName

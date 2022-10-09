@@ -117,9 +117,9 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.DateTimes
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(dateOfBirth)
                 &&
-                c.Code == "MIN:2000-12-31"
+                c.Code == "MIN:2000-12-31 00:00:00"
                 &&
-                c.Description == $"The '{nameof(dateOfBirth)}' is very old. The minimum is 2000-12-31"
+                c.Description == $"The '{nameof(dateOfBirth)}' is very old. The minimum is 2000-12-31 00:00:00"
             );
         }
 
@@ -143,9 +143,9 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.DateTimes
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(dateOfBirth)
                 &&
-                c.Code == "MAX:2021-01-02"
+                c.Code == "MAX:2021-01-02 00:00:00"
                 &&
-                c.Description == $"The '{nameof(dateOfBirth)}' is very future. The maximum is 2021-01-02"
+                c.Description == $"The '{nameof(dateOfBirth)}' is very future. The maximum is 2021-01-02 00:00:00"
             );
         }
 
@@ -250,9 +250,9 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.DateTimes
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(dateOfBirth)
                 &&
-                c.Code == "MIN:2000-12-31"
+                c.Code == "MIN:2000-12-31 00:00:00"
                 &&
-                c.Description == $"The '{nameof(dateOfBirth)}' is very old. The minimum is 2000-12-31"
+                c.Description == $"The '{nameof(dateOfBirth)}' is very old. The minimum is 2000-12-31 00:00:00"
             );
         }
 
@@ -276,9 +276,9 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.DateTimes
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(dateOfBirth)
                 &&
-                c.Code == "MAX:2021-01-02"
+                c.Code == "MAX:2021-01-02 00:00:00"
                 &&
-                c.Description == $"The '{nameof(dateOfBirth)}' is very future. The maximum is 2021-01-02"
+                c.Description == $"The '{nameof(dateOfBirth)}' is very future. The maximum is 2021-01-02 00:00:00"
             );
         }
 
