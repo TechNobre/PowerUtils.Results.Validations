@@ -515,7 +515,7 @@ namespace PowerUtils.Results
         );
 
         /// <summary>
-        /// Validates if <paramref name="validatable.Value"/> is greater than utc today and adds an error code 'MAX:DATETIME_UTCTODAY' in error list
+        /// Validates if <paramref name="validatable.Value"/> is greater than utc today and adds an error code 'MAX:DATE_UTCTODAY' in error list
         /// </summary>
         public static IValidatable<DateOnly> IfGreaterThanUtcToday(this IValidatable<DateOnly> validatable)
             => validatable.Validator(property => property.Value.IfGreaterThanUtcToday(property.Name));
@@ -553,7 +553,7 @@ namespace PowerUtils.Results
         }
 
         /// <summary>
-        /// Returns an <see cref="IError" /> if <paramref name="value"/> is greater than utc today. Error code 'MAX:DATETIME_UTCTODAY'
+        /// Returns an <see cref="IError" /> if <paramref name="value"/> is greater than utc today. Error code 'MAX:DATE_UTCTODAY'
         /// </summary>
         public static IError IfGreaterThanUtcToday(
             this DateOnly? value,
@@ -568,7 +568,7 @@ namespace PowerUtils.Results
         );
 
         /// <summary>
-        /// Validates if <paramref name="validatable.Value"/> is greater than utc today and adds an error code 'MAX:DATETIME_UTCTODAY' in error list
+        /// Validates if <paramref name="validatable.Value"/> is greater than utc today and adds an error code 'MAX:DATE_UTCTODAY' in error list
         /// </summary>
         public static IValidatable<DateOnly?> IfGreaterThanUtcToday(this IValidatable<DateOnly?> validatable)
             => validatable.Validator(property => property.Value.IfGreaterThanUtcToday(property.Name));
@@ -602,7 +602,7 @@ namespace PowerUtils.Results
         }
 
         /// <summary>
-        /// Returns an <see cref="IError" /> if <paramref name="value"/> is less than utc today. Error code 'MIN:DATETIME_UTCTODAY'
+        /// Returns an <see cref="IError" /> if <paramref name="value"/> is less than utc today. Error code 'MIN:DATE_UTCTODAY'
         /// </summary>
         public static IError IfLessThanUtcToday(
             this DateOnly value,
@@ -617,7 +617,7 @@ namespace PowerUtils.Results
         );
 
         /// <summary>
-        /// Validates if <paramref name="validatable.Value"/> is less than utc today and adds an error code 'MIN:DATETIME_UTCTODAY' in error list
+        /// Validates if <paramref name="validatable.Value"/> is less than utc today and adds an error code 'MIN:DATE_UTCTODAY' in error list
         /// </summary>
         public static IValidatable<DateOnly> IfLessThanUtcToday(this IValidatable<DateOnly> validatable)
             => validatable.Validator(property => property.Value.IfLessThanUtcToday(property.Name));
@@ -655,7 +655,7 @@ namespace PowerUtils.Results
         }
 
         /// <summary>
-        /// Returns an <see cref="IError" /> if <paramref name="value"/> is less than utc today. Error code 'MIN:DATETIME_UTCTODAY'
+        /// Returns an <see cref="IError" /> if <paramref name="value"/> is less than utc today. Error code 'MIN:DATE_UTCTODAY'
         /// </summary>
         public static IError IfLessThanUtcToday(
             this DateOnly? value,
@@ -670,7 +670,7 @@ namespace PowerUtils.Results
         );
 
         /// <summary>
-        /// Validates if <paramref name="validatable.Value"/> is less than utc today and adds an error code 'MIN:DATETIME_UTCTODAY' in error list
+        /// Validates if <paramref name="validatable.Value"/> is less than utc today and adds an error code 'MIN:DATE_UTCTODAY' in error list
         /// </summary>
         public static IValidatable<DateOnly?> IfLessThanUtcToday(this IValidatable<DateOnly?> validatable)
             => validatable.Validator(property => property.Value.IfLessThanUtcToday(property.Name));

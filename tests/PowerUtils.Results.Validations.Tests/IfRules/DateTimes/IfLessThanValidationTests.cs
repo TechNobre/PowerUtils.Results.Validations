@@ -26,9 +26,9 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.DateTimes
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(dateOfBirth)
                 &&
-                c.Code == "MIN:2000-12-31"
+                c.Code == "MIN:2000-12-31 00:00:00"
                 &&
-                c.Description == $"The '{nameof(dateOfBirth)}' is very old. The minimum is 2000-12-31"
+                c.Description == $"The '{nameof(dateOfBirth)}' is very old. The minimum is 2000-12-31 00:00:00"
             );
         }
 
@@ -120,9 +120,9 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.DateTimes
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(dateOfBirth)
                 &&
-                c.Code == "MIN:2000-12-31"
+                c.Code == "MIN:2000-12-31 00:00:00"
                 &&
-                c.Description == $"The '{nameof(dateOfBirth)}' is very old. The minimum is 2000-12-31"
+                c.Description == $"The '{nameof(dateOfBirth)}' is very old. The minimum is 2000-12-31 00:00:00"
             );
         }
 
