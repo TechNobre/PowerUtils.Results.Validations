@@ -1,3 +1,18 @@
+# [1.1.0](https://github.com/TechNobre/PowerUtils.Results.Validations/compare/v1.0.0...v1.1.0) (2022-10-09)
+
+
+### Bug Fixes
+
+* ErrorCode for DateTimeValidations ([53a9fad](https://github.com/TechNobre/PowerUtils.Results.Validations/commit/53a9fadccba7078be1bd8e3934ea000c4b2b8fa7))
+* Wrong value when the input is null for `ToTimeNullable`, `ToDateNullable` and `ToDateTimeNullable` ([ac9c6ed](https://github.com/TechNobre/PowerUtils.Results.Validations/commit/ac9c6ed23972637a61cc8b66797b55c0d140d9f4))
+
+
+### Features
+
+* Added new validation `IfCountOutOfRange()` ([753c4e5](https://github.com/TechNobre/PowerUtils.Results.Validations/commit/753c4e58113b7fb6fcc087e367eb1a2c0f40d68f))
+* Added validations for `DateOnly` ([7895014](https://github.com/TechNobre/PowerUtils.Results.Validations/commit/789501481d170bea10d6263258cf7856277a2cab))
+* Added validations for `TimeOnly` ([476056d](https://github.com/TechNobre/PowerUtils.Results.Validations/commit/476056d5b111f1231cfd05faaeb48fee479c594c))
+
 # 1.0.0 (2022-09-27)
 
 
