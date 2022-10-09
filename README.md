@@ -159,7 +159,7 @@ var error4 = email2.ShouldBeEmail();
   - `IfLengthOutOfRange();`
   - `IfEquals();`
   - `IfDifferent();`
-- __DateTimes/DateOnly:__
+- __DateTimes/DateOnly/TimeOnly:__
   - `IfGreaterThan();`
   - `IfLessThan();`
   - `IfOutOfRange();`
