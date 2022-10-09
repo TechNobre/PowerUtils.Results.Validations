@@ -44,7 +44,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Dates
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(dateOfBirth)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(dateOfBirth)}' cannot be different to '{otherValue}'"
             );
@@ -69,7 +69,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Dates
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(dateOfBirth)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(dateOfBirth)}' cannot be different to '{otherValue}'"
             );
@@ -111,7 +111,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Dates
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(dateOfBirth)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(dateOfBirth)}' cannot be different to '{otherValue}'"
             );
@@ -153,7 +153,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Dates
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(dateOfBirth)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(dateOfBirth)}' cannot be equal to '{otherValue}'"
             );

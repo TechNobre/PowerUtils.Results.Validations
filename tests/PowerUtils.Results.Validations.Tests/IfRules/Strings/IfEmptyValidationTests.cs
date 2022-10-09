@@ -40,7 +40,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Strings
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(client)
                 &&
-                c.Code == ErrorCodes.REQUIRED
+                c.Code == Errors.Codes.REQUIRED
                 &&
                 c.Description == $"The '{nameof(client)}' cannot be empty"
             );

@@ -32,7 +32,7 @@ namespace PowerUtils.Results
         ) => value.IfEmpty(
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.REQUIRED,
+                Errors.Codes.REQUIRED,
                 $"The '{propertyName}' cannot be empty"
             ),
             propertyName
@@ -80,7 +80,7 @@ namespace PowerUtils.Results
         ) => value.IfNullOrEmpty(
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.REQUIRED,
+                Errors.Codes.REQUIRED,
                 $"The '{propertyName}' cannot be null or empty"
             ),
             propertyName
@@ -128,7 +128,7 @@ namespace PowerUtils.Results
         ) => value.IfNullOrWhiteSpace(
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.REQUIRED,
+                Errors.Codes.REQUIRED,
                 $"The '{propertyName}' cannot be null or white spaces"
             ),
             propertyName
@@ -179,7 +179,7 @@ namespace PowerUtils.Results
             maxLength,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.CreateMax(maxLength),
+                ErrorFactory.CreateMax(maxLength),
                 $"The '{propertyName}' is too long. The maximum length is {maxLength}"
             ),
             propertyName
@@ -233,7 +233,7 @@ namespace PowerUtils.Results
             minLength,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.CreateMin(minLength),
+                ErrorFactory.CreateMin(minLength),
                 $"The '{propertyName}' is too short. The minimum length is {minLength}"
             ),
             propertyName
@@ -287,7 +287,7 @@ namespace PowerUtils.Results
             length,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.INVALID,
+                Errors.Codes.INVALID,
                 $"The '{propertyName}' is of an invalid length. The length cannot be {length}"
             ),
             propertyName
@@ -341,7 +341,7 @@ namespace PowerUtils.Results
             length,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.INVALID,
+                Errors.Codes.INVALID,
                 $"The '{propertyName}' is of an invalid length. The length must be {length}"
             ),
             propertyName
@@ -409,12 +409,12 @@ namespace PowerUtils.Results
             maxLength,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.CreateMin(minLength),
+                ErrorFactory.CreateMin(minLength),
                 $"The '{propertyName}' is too short. The minimum length is {minLength}"
             ),
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.CreateMax(maxLength),
+                ErrorFactory.CreateMax(maxLength),
                 $"The '{propertyName}' is too long. The maximum length is {maxLength}"
             ),
             propertyName
@@ -477,7 +477,7 @@ namespace PowerUtils.Results
             otherValue,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.INVALID,
+                Errors.Codes.INVALID,
                 $"The '{propertyName}' cannot be equal to '{otherValue}'"
             ),
             comparisonType,
@@ -541,7 +541,7 @@ namespace PowerUtils.Results
             otherValue,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.INVALID,
+                Errors.Codes.INVALID,
                 $"The '{propertyName}' cannot be different to '{otherValue}'"
             ),
             comparisonType,

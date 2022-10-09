@@ -43,7 +43,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Strings
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(client)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(client)}' cannot be different to '{otherValue}'"
             );
@@ -68,7 +68,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Strings
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(client)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(client)}' cannot be different to '{otherValue}'"
             );
@@ -93,7 +93,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Strings
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(client)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(client)}' cannot be different to '{otherValue}'"
             );
@@ -118,7 +118,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Strings
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(client)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(client)}' cannot be different to '{otherValue}'"
             );
@@ -196,7 +196,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Strings
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(client)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(client)}' cannot be different to '{otherValue}'"
             );
@@ -221,7 +221,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Strings
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(client)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(client)}' cannot be different to '{otherValue}'"
             );
@@ -246,7 +246,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Strings
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(client)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(client)}' cannot be different to '{otherValue}'"
             );

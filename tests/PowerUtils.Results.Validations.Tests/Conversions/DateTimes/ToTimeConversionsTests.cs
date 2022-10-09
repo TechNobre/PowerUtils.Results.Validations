@@ -28,7 +28,7 @@ namespace PowerUtils.Results.Validations.Tests.Conversions.DateTimes
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(date)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(date)}' is an invalid 'Time'. The supported format is '{format}'"
             );
@@ -79,7 +79,7 @@ namespace PowerUtils.Results.Validations.Tests.Conversions.DateTimes
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(date)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(date)}' is an invalid 'Time'. The supported format is '{format}'"
             );
@@ -127,7 +127,7 @@ namespace PowerUtils.Results.Validations.Tests.Conversions.DateTimes
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(date)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(date)}' is an invalid 'Time'. The supported format is '{format}'"
             );
@@ -182,7 +182,7 @@ namespace PowerUtils.Results.Validations.Tests.Conversions.DateTimes
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(date)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(date)}' is an invalid 'Time'. The supported format is '{format}'"
             );

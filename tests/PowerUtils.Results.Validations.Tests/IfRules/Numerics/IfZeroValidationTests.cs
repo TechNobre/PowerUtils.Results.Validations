@@ -40,7 +40,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Numerics
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(quantity)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(quantity)}' cannot be equal to '0'"
             );
@@ -82,7 +82,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Numerics
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(quantity)
                 &&
-                c.Code == ErrorCodes.INVALID
+                c.Code == Errors.Codes.INVALID
                 &&
                 c.Description == $"The '{nameof(quantity)}' cannot be equal to '0'"
             );

@@ -39,7 +39,7 @@ namespace PowerUtils.Results
             max,
             (_) => Error.Validation(
                 propertyName,
-                Temporary.CreateMax(max),
+                ErrorFactory.CreateDateMax(max),
                 $"The '{propertyName}' is very future. The maximum is {max:yyyy-MM-dd}"
             ),
             propertyName
@@ -93,7 +93,7 @@ namespace PowerUtils.Results
             max,
             (_) => Error.Validation(
                 propertyName,
-                Temporary.CreateMax(max),
+                ErrorFactory.CreateDateMax(max),
                 $"The '{propertyName}' is very future. The maximum is {max:yyyy-MM-dd}"
             ),
             propertyName
@@ -148,7 +148,7 @@ namespace PowerUtils.Results
             min,
             (_) => Error.Validation(
                 propertyName,
-                Temporary.CreateMin(min),
+                ErrorFactory.CreateDateMin(min),
                 $"The '{propertyName}' is very old. The minimum is {min:yyyy-MM-dd}"
             ),
             propertyName
@@ -202,7 +202,7 @@ namespace PowerUtils.Results
             min,
             (_) => Error.Validation(
                 propertyName,
-                Temporary.CreateMin(min),
+                ErrorFactory.CreateDateMin(min),
                 $"The '{propertyName}' is very old. The minimum is {min:yyyy-MM-dd}"
             ),
             propertyName
@@ -265,12 +265,12 @@ namespace PowerUtils.Results
             max,
             (_) => Error.Validation(
                 propertyName,
-                Temporary.CreateMin(min),
+                ErrorFactory.CreateDateMin(min),
                 $"The '{propertyName}' is very old. The minimum is {min:yyyy-MM-dd}"
             ),
             (_) => Error.Validation(
                 propertyName,
-                Temporary.CreateMax(max),
+                ErrorFactory.CreateDateMax(max),
                 $"The '{propertyName}' is very future. The maximum is {max:yyyy-MM-dd}"
             ),
             propertyName
@@ -341,12 +341,12 @@ namespace PowerUtils.Results
             max,
             (_) => Error.Validation(
                 propertyName,
-                Temporary.CreateMin(min),
+                ErrorFactory.CreateDateMin(min),
                 $"The '{propertyName}' is very old. The minimum is {min:yyyy-MM-dd}"
             ),
             (_) => Error.Validation(
                 propertyName,
-                Temporary.CreateMax(max),
+                ErrorFactory.CreateDateMax(max),
                 $"The '{propertyName}' is very future. The maximum is {max:yyyy-MM-dd}"
             ),
             propertyName
@@ -403,7 +403,7 @@ namespace PowerUtils.Results
             otherValue,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.INVALID,
+                Errors.Codes.INVALID,
                 $"The '{propertyName}' cannot be equal to '{otherValue}'"
             ),
             propertyName
@@ -457,7 +457,7 @@ namespace PowerUtils.Results
             otherValue,
             (_) => Error.Validation(
                 propertyName,
-                ErrorCodes.INVALID,
+                Errors.Codes.INVALID,
                 $"The '{propertyName}' cannot be equal to '{otherValue}'"
             ),
             propertyName

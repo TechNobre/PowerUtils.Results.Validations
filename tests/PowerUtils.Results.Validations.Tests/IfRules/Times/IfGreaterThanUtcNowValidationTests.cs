@@ -125,7 +125,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Times
         public void ForbiddenError_IfGreaterThanUtcNow_ErrorCode()
         {
             // Arrange
-            var dateOfBirth = new TimeOnly(23, 1, 1);
+            var dateOfBirth = TimeOnly.FromDateTime(DateTime.UtcNow.AddSeconds(5));
 
             var expectedProperty = "fakeProp lat";
             var expectedCode = "fakeCode lat";
@@ -161,7 +161,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Times
         public void ForbiddenError_IfGreaterThanUtcNowNullable_ErrorCode()
         {
             // Arrange
-            TimeOnly? dateOfBirth = new TimeOnly(23, 1, 1);
+            TimeOnly? dateOfBirth = TimeOnly.FromDateTime(DateTime.UtcNow.AddSeconds(5));
 
             var expectedProperty = "fakeProp lat";
             var expectedCode = "fakeCode lat";

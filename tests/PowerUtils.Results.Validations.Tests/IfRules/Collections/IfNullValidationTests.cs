@@ -24,7 +24,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Collections
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(prodList)
                 &&
-                c.Code == ErrorCodes.REQUIRED
+                c.Code == Errors.Codes.REQUIRED
                 &&
                 c.Description == $"The '{nameof(prodList)}' cannot be null"
             );
