@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FluentAssertions;
 using Xunit;
 
@@ -208,6 +209,28 @@ namespace PowerUtils.Results.Validations.Tests.Conversions.DateTimes
             act.Errors.Should().HaveCount(0);
             act.Value.Should().Be(new DateOnly(2021, 12, 22));
             result.Should().Be(new DateOnly(2021, 12, 22));
+        }
+
+        [Fact]
+        public void Null_ToDateNullable_NullValueNoErrors()
+        {
+            // Arrange
+            string date = null;
+
+            var errors = new List<IError>();
+
+
+            // Act
+            var act = date.Validate(errors)
+                .ToDateNullable(out var newDate)
+                .IfOutOfRange(new DateOnly(2021, 1, 1), new DateOnly(2022, 12, 22));
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+
+            act.Value.Should().BeNull();
+            newDate.Should().BeNull();
         }
 #endif
     }

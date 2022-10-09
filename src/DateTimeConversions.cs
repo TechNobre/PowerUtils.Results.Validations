@@ -54,6 +54,16 @@ namespace PowerUtils.Results
         /// </summary>
         public static IValidatable<DateTime?> ToDateTimeNullable(this IValidatable<string> validatable, out DateTime? result, string format = "yyyy-MM-dd HH:mm:ss")
         {
+            if(validatable.Value is null)
+            {
+                result = default;
+                return new Validatable<DateTime?>(
+                    default,
+                    validatable.Name,
+                    validatable.Errors
+                );
+            }
+
             if(DateTime.TryParseExact(validatable.Value, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out var dateTime))
             {
                 result = dateTime;
@@ -134,6 +144,16 @@ namespace PowerUtils.Results
         /// </summary>
         public static IValidatable<DateOnly?> ToDateNullable(this IValidatable<string> validatable, out DateOnly? result, string format = "yyyy-MM-dd")
         {
+            if(validatable.Value is null)
+            {
+                result = default;
+                return new Validatable<DateOnly?>(
+                    default,
+                    validatable.Name,
+                    validatable.Errors
+                );
+            }
+
             if(DateOnly.TryParseExact(validatable.Value, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out var date))
             {
                 result = date;
@@ -213,6 +233,16 @@ namespace PowerUtils.Results
         /// </summary>
         public static IValidatable<TimeOnly?> ToTimeNullable(this IValidatable<string> validatable, out TimeOnly? result, string format = "HH:mm:ss")
         {
+            if(validatable.Value is null)
+            {
+                result = default;
+                return new Validatable<TimeOnly?>(
+                    default,
+                    validatable.Name,
+                    validatable.Errors
+                );
+            }
+
             if(TimeOnly.TryParseExact(validatable.Value, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out var time))
             {
                 result = time;

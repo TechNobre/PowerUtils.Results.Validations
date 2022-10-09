@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FluentAssertions;
 using Xunit;
 
@@ -207,6 +208,28 @@ namespace PowerUtils.Results.Validations.Tests.Conversions.DateTimes
             act.Errors.Should().HaveCount(0);
             act.Value.Should().Be(new TimeOnly(11, 12, 13));
             result.Should().Be(new TimeOnly(11, 12, 13));
+        }
+
+        [Fact]
+        public void Null_ToTimeNullable_NullValueNoErrors()
+        {
+            // Arrange
+            string time = null;
+
+            var errors = new List<IError>();
+
+
+            // Act
+            var act = time.Validate(errors)
+                .ToTimeNullable(out var newTime)
+                .IfOutOfRange(new TimeOnly(11, 12, 13), new TimeOnly(21, 12, 13));
+
+
+            // Assert
+            act.Errors.Should().HaveCount(0);
+
+            act.Value.Should().BeNull();
+            newTime.Should().BeNull();
         }
 #endif
     }
