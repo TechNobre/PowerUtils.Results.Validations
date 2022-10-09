@@ -5,7 +5,10 @@ namespace PowerUtils.Results
 {
     public static class DateTimeValidations
     {
-        public const string MIN_DATETIME_UTCTODAY = "MIN:DATETIME_UTCNOW";
+        public const string MIN_DATETIME_UTCNOW = "MIN:DATETIME_UTCNOW";
+        public const string MAX_DATETIME_UTCNOW = "MAX:DATETIME_UTCNOW";
+
+        public const string MIN_DATETIME_UTCTODAY = "MIN:DATETIME_UTCTODAY";
         public const string MAX_DATETIME_UTCTODAY = "MAX:DATETIME_UTCTODAY";
 
 
@@ -710,7 +713,7 @@ namespace PowerUtils.Results
         ) => value.IfLessThanUtcNow(
             (_) => Error.Validation(
                 propertyName,
-                MIN_DATETIME_UTCTODAY,
+                MIN_DATETIME_UTCNOW,
                 $"The '{propertyName}' is very old. The minimum is UTC NOW"
             ),
             propertyName
@@ -764,7 +767,7 @@ namespace PowerUtils.Results
         ) => value.IfLessThanUtcNow(
             (_) => Error.Validation(
                 propertyName,
-                MIN_DATETIME_UTCTODAY,
+                MIN_DATETIME_UTCNOW,
                 $"The '{propertyName}' is very old. The minimum is UTC NOW"
             ),
             propertyName
@@ -812,7 +815,7 @@ namespace PowerUtils.Results
         ) => value.IfLessThanUtcToday(
             (_) => Error.Validation(
                 propertyName,
-                "MIN:DATETIME_UTCTODAY",
+                MIN_DATETIME_UTCTODAY,
                 $"The '{propertyName}' is very old. The minimum is UTC TODAY"
             ),
             propertyName
@@ -865,7 +868,7 @@ namespace PowerUtils.Results
         ) => value.IfLessThanUtcToday(
             (_) => Error.Validation(
                 propertyName,
-                "MIN:DATETIME_UTCTODAY",
+                MIN_DATETIME_UTCTODAY,
                 $"The '{propertyName}' is very old. The minimum is UTC TODAY"
             ),
             propertyName
