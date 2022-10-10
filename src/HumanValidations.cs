@@ -27,7 +27,7 @@ namespace PowerUtils.Results
         ) => value.IfNotGender(
             (_) => Error.Validation(
                 propertyName,
-                Errors.Codes.INVALID,
+                ResultErrorCodes.INVALID,
                 $"The '{propertyName}' is invalid gender. The allowed values are 'MALE' and 'FEMALE'"
             ),
             propertyName
@@ -103,7 +103,7 @@ namespace PowerUtils.Results
         ) => value.IfNotGenderOrOther(
             (_) => Error.Validation(
                 propertyName,
-                Errors.Codes.INVALID,
+                ResultErrorCodes.INVALID,
                 $"The '{propertyName}' is invalid gender. The allowed values are 'MALE', 'FEMALE' or 'OTHER'"
             ),
             propertyName

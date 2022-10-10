@@ -39,7 +39,7 @@ namespace PowerUtils.Results
             max,
             (_) => Error.Validation(
                 propertyName,
-                ErrorFactory.CreateTimeMax(max),
+                ErrorCodeFactory.CreateTimeMax(max),
                 $"The '{propertyName}' is very future. The maximum is {max:HH:mm:ss}"
             ),
             propertyName
@@ -93,7 +93,7 @@ namespace PowerUtils.Results
             max,
             (_) => Error.Validation(
                 propertyName,
-                ErrorFactory.CreateTimeMax(max),
+                ErrorCodeFactory.CreateTimeMax(max),
                 $"The '{propertyName}' is very future. The maximum is {max:HH:mm:ss}"
             ),
             propertyName
@@ -148,7 +148,7 @@ namespace PowerUtils.Results
             min,
             (_) => Error.Validation(
                 propertyName,
-                ErrorFactory.CreateTimeMin(min),
+                ErrorCodeFactory.CreateTimeMin(min),
                 $"The '{propertyName}' is very old. The minimum is {min:HH:mm:ss}"
             ),
             propertyName
@@ -202,7 +202,7 @@ namespace PowerUtils.Results
             min,
             (_) => Error.Validation(
                 propertyName,
-                ErrorFactory.CreateTimeMin(min),
+                ErrorCodeFactory.CreateTimeMin(min),
                 $"The '{propertyName}' is very old. The minimum is {min:HH:mm:ss}"
             ),
             propertyName
@@ -265,12 +265,12 @@ namespace PowerUtils.Results
             max,
             (_) => Error.Validation(
                 propertyName,
-                ErrorFactory.CreateTimeMin(min),
+                ErrorCodeFactory.CreateTimeMin(min),
                 $"The '{propertyName}' is very old. The minimum is {min:HH:mm:ss}"
             ),
             (_) => Error.Validation(
                 propertyName,
-                ErrorFactory.CreateTimeMax(max),
+                ErrorCodeFactory.CreateTimeMax(max),
                 $"The '{propertyName}' is very future. The maximum is {max:HH:mm:ss}"
             ),
             propertyName
@@ -341,12 +341,12 @@ namespace PowerUtils.Results
             max,
             (_) => Error.Validation(
                 propertyName,
-                ErrorFactory.CreateTimeMin(min),
+                ErrorCodeFactory.CreateTimeMin(min),
                 $"The '{propertyName}' is very old. The minimum is {min:HH:mm:ss}"
             ),
             (_) => Error.Validation(
                 propertyName,
-                ErrorFactory.CreateTimeMax(max),
+                ErrorCodeFactory.CreateTimeMax(max),
                 $"The '{propertyName}' is very future. The maximum is {max:HH:mm:ss}"
             ),
             propertyName
@@ -403,7 +403,7 @@ namespace PowerUtils.Results
             otherValue,
             (_) => Error.Validation(
                 propertyName,
-                Errors.Codes.INVALID,
+                ResultErrorCodes.INVALID,
                 $"The '{propertyName}' cannot be equal to '{otherValue}'"
             ),
             propertyName
@@ -457,7 +457,7 @@ namespace PowerUtils.Results
             otherValue,
             (_) => Error.Validation(
                 propertyName,
-                Errors.Codes.INVALID,
+                ResultErrorCodes.INVALID,
                 $"The '{propertyName}' cannot be equal to '{otherValue}'"
             ),
             propertyName
@@ -508,7 +508,7 @@ namespace PowerUtils.Results
         ) => value.IfGreaterThanUtcNow(
             (_) => Error.Validation(
                 propertyName,
-                ErrorFactory.MAX_DATETIME_UTCNOW,
+                ErrorCodeFactory.MAX_DATETIME_UTCNOW,
                 $"The '{propertyName}' is very future. The maximum is UTC NOW"
             ),
             propertyName
@@ -562,7 +562,7 @@ namespace PowerUtils.Results
         ) => value.IfGreaterThanUtcNow(
             (_) => Error.Validation(
                 propertyName,
-                ErrorFactory.MAX_DATETIME_UTCNOW,
+                ErrorCodeFactory.MAX_DATETIME_UTCNOW,
                 $"The '{propertyName}' is very future. The maximum is UTC NOW"
             ),
             propertyName

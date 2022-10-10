@@ -44,7 +44,7 @@ namespace PowerUtils.Results.Validations.Tests.ShouldRules.Financial
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(expiryDate)
                 &&
-                c.Code == Errors.Codes.INVALID
+                c.Code == ResultErrorCodes.INVALID
                 &&
                 c.Description == $"The '{nameof(expiryDate)}' is an invalid expiry date format"
             );
@@ -71,7 +71,7 @@ namespace PowerUtils.Results.Validations.Tests.ShouldRules.Financial
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(expiryDate)
                 &&
-                c.Code == Errors.Codes.INVALID
+                c.Code == ResultErrorCodes.INVALID
                 &&
                 c.Description == $"The '{nameof(expiryDate)}' is an invalid expiry date format"
             );

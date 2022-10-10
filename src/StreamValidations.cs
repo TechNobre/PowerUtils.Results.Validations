@@ -37,7 +37,7 @@ namespace PowerUtils.Results
         ) => value.IfEmpty(
             (_) => Error.Validation(
                 propertyName,
-                Errors.Codes.REQUIRED,
+                ResultErrorCodes.REQUIRED,
                 $"The '{propertyName}' cannot be empty"
             ),
             propertyName
@@ -84,7 +84,7 @@ namespace PowerUtils.Results
         ) => value.IfNullOrEmpty(
             (_) => Error.Validation(
                 propertyName,
-                Errors.Codes.REQUIRED,
+                ResultErrorCodes.REQUIRED,
                 $"The '{propertyName}' cannot be null or empty"
             ),
             propertyName

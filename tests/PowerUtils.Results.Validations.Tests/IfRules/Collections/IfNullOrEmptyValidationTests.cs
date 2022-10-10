@@ -26,7 +26,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Collections
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(prodList)
                 &&
-                c.Code == Errors.Codes.REQUIRED
+                c.Code == ResultErrorCodes.REQUIRED
                 &&
                 c.Description == $"The '{nameof(prodList)}' cannot be null or empty"
             );
@@ -50,7 +50,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Collections
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(prodList)
                 &&
-                c.Code == Errors.Codes.REQUIRED
+                c.Code == ResultErrorCodes.REQUIRED
                 &&
                 c.Description == $"The '{nameof(prodList)}' cannot be null or empty"
             );

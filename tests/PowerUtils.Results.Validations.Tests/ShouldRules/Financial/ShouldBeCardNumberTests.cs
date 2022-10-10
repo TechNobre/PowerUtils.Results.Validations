@@ -48,7 +48,7 @@ namespace PowerUtils.Results.Validations.Tests.ShouldRules.Financial
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(cardNumber)
                 &&
-                c.Code == Errors.Codes.INVALID
+                c.Code == ResultErrorCodes.INVALID
                 &&
                 c.Description == $"The '{nameof(cardNumber)}' is an invalid card number format"
             );

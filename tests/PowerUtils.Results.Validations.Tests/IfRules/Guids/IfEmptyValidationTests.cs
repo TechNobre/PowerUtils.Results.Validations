@@ -25,7 +25,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Guids
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(id)
                 &&
-                c.Code == Errors.Codes.REQUIRED
+                c.Code == ResultErrorCodes.REQUIRED
                 &&
                 c.Description == $"The '{nameof(id)}' cannot be empty"
             );

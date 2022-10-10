@@ -25,7 +25,7 @@ namespace PowerUtils.Results.Validations.Tests.Conversions.Numerics
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(val)
                 &&
-                c.Code == Errors.Codes.INVALID
+                c.Code == ResultErrorCodes.INVALID
                 &&
                 c.Description == $"The '{nameof(val)}' is an invalid"
             );

@@ -38,7 +38,7 @@ namespace PowerUtils.Results
             => value.IfEmpty(
                 (_) => Error.Validation(
                     propertyName,
-                    Errors.Codes.REQUIRED,
+                    ResultErrorCodes.REQUIRED,
                     $"The '{propertyName}' cannot be empty"
                 ),
                 propertyName
@@ -89,7 +89,7 @@ namespace PowerUtils.Results
             => value.IfNullOrEmpty(
                 (_) => Error.Validation(
                     propertyName,
-                    Errors.Codes.REQUIRED,
+                    ResultErrorCodes.REQUIRED,
                     $"The '{propertyName}' cannot be null or empty"
                 ),
                 propertyName
@@ -148,7 +148,7 @@ namespace PowerUtils.Results
                 max,
                 (_) => Error.Validation(
                     propertyName,
-                    ErrorFactory.CreateMax(max),
+                    ErrorCodeFactory.CreateMax(max),
                     $"The '{propertyName}' contains a lot of items. The maximum is {max}"
                 ),
                 propertyName
@@ -210,7 +210,7 @@ namespace PowerUtils.Results
                 min,
                 (_) => Error.Validation(
                     propertyName,
-                    ErrorFactory.CreateMin(min),
+                    ErrorCodeFactory.CreateMin(min),
                     $"The '{propertyName}' contains few items. The minimum is {min}"
                 ),
                 propertyName
@@ -281,12 +281,12 @@ namespace PowerUtils.Results
                 max,
                 (_) => Error.Validation(
                     propertyName,
-                    ErrorFactory.CreateMin(min),
+                    ErrorCodeFactory.CreateMin(min),
                     $"The '{propertyName}' contains few items. The minimum is {min}"
                 ),
                 (_) => Error.Validation(
                     propertyName,
-                    ErrorFactory.CreateMax(max),
+                    ErrorCodeFactory.CreateMax(max),
                     $"The '{propertyName}' contains a lot of items. The maximum is {max}"
                 ),
                 propertyName

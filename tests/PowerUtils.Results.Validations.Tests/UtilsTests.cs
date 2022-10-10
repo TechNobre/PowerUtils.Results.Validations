@@ -27,7 +27,7 @@ namespace PowerUtils.Results.Validations.Tests
             errors.Should().Contain(c =>
                 c.Property == propertyName
                 &&
-                c.Code == Errors.Codes.REQUIRED
+                c.Code == ResultErrorCodes.REQUIRED
                 &&
                 c.Description == $"The '{propertyName}' cannot be null"
             );
@@ -55,7 +55,7 @@ namespace PowerUtils.Results.Validations.Tests
             errors.Should().ContainSingle(c =>
                 c.Property == nameof(firstName)
                 &&
-                c.Code == Errors.Codes.REQUIRED
+                c.Code == ResultErrorCodes.REQUIRED
                 &&
                 c.Description == $"The '{nameof(firstName)}' cannot be null"
             );
@@ -63,7 +63,7 @@ namespace PowerUtils.Results.Validations.Tests
             errors.Should().ContainSingle(c =>
                 c.Property == nameof(lastName)
                 &&
-                c.Code == Errors.Codes.REQUIRED
+                c.Code == ResultErrorCodes.REQUIRED
                 &&
                 c.Description == $"The '{nameof(lastName)}' cannot be null"
             );
@@ -90,7 +90,7 @@ namespace PowerUtils.Results.Validations.Tests
             act.Errors.Should().ContainSingle(c =>
                 c.Property == nameof(address)
                 &&
-                c.Code == Errors.Codes.REQUIRED
+                c.Code == ResultErrorCodes.REQUIRED
                 &&
                 c.Description == $"The '{nameof(address)}' cannot be null"
             );
@@ -109,7 +109,7 @@ namespace PowerUtils.Results.Validations.Tests
 
             // Assert
             act.Property.Should().Be(nameof(address));
-            act.Code.Should().Be(Errors.Codes.REQUIRED);
+            act.Code.Should().Be(ResultErrorCodes.REQUIRED);
             act.Description.Should().Be($"The '{nameof(address)}' cannot be null");
         }
 
@@ -132,7 +132,7 @@ namespace PowerUtils.Results.Validations.Tests
             act.Errors.Should().ContainSingle(c =>
                 c.Property == nameof(address)
                 &&
-                c.Code == Errors.Codes.REQUIRED
+                c.Code == ResultErrorCodes.REQUIRED
                 &&
                 c.Description == $"The '{nameof(address)}' cannot be null or empty"
             );
@@ -196,13 +196,13 @@ namespace PowerUtils.Results.Validations.Tests
             act.Errors.Should().ContainSingle(c =>
                 c.Property == nameof(dateTime)
                 &&
-                c.Code == Errors.Codes.INVALID
+                c.Code == ResultErrorCodes.INVALID
             );
 
             act.Errors.Should().ContainSingle(c =>
                 c.Property == nameof(dateTime)
                 &&
-                c.Code == ErrorFactory.MIN_DATETIME_UTCNOW
+                c.Code == ErrorCodeFactory.MIN_DATETIME_UTCNOW
             );
         }
     }

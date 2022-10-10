@@ -24,7 +24,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Globalizations
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(degree)
                 &&
-                c.Code == ErrorFactory.MIN_LONGITUDE
+                c.Code == ErrorCodeFactory.MIN_LONGITUDE
                 &&
                 c.Description == $"The '{nameof(degree)}' is invalid. The minimum longitude is -180"
             );
@@ -48,7 +48,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Globalizations
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(degree)
                 &&
-                c.Code == ErrorFactory.MAX_LONGITUDE
+                c.Code == ErrorCodeFactory.MAX_LONGITUDE
                 &&
                  c.Description == $"The '{nameof(degree)}' is invalid. The maximum longitude is 180"
             );
@@ -152,7 +152,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Globalizations
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(degree)
                 &&
-                c.Code == ErrorFactory.MIN_LONGITUDE
+                c.Code == ErrorCodeFactory.MIN_LONGITUDE
                 &&
                 c.Description == $"The '{nameof(degree)}' is invalid. The minimum longitude is -180"
             );
@@ -176,7 +176,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Globalizations
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(degree)
                 &&
-                c.Code == ErrorFactory.MAX_LONGITUDE
+                c.Code == ErrorCodeFactory.MAX_LONGITUDE
                 &&
                  c.Description == $"The '{nameof(degree)}' is invalid. The maximum longitude is 180"
             );
