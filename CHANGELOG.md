@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/TechNobre/PowerUtils.Results.Validations/compare/v1.1.0...v1.1.1) (2022-10-10)
+
+
+### Bug Fixes
+
+* Rename ErrorFactory to ErrorCodeFactory to prevent conflits ([434a41f](https://github.com/TechNobre/PowerUtils.Results.Validations/commit/434a41f0e8ef572f19b8890bdfd7d3fde41e1614))
+
 # [1.1.0](https://github.com/TechNobre/PowerUtils.Results.Validations/compare/v1.0.0...v1.1.0) (2022-10-09)
 
 
