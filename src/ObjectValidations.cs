@@ -31,7 +31,7 @@ namespace PowerUtils.Results
         ) => value.IfNull(
             (_) => Error.Validation(
                 propertyName,
-                Errors.Codes.REQUIRED,
+                ResultErrorCodes.REQUIRED,
                 $"The '{propertyName}' cannot be null"
             ),
             propertyName
@@ -83,7 +83,7 @@ namespace PowerUtils.Results
                 otherValue,
                 (_) => Error.Validation(
                     propertyName,
-                    Errors.Codes.INVALID,
+                    ResultErrorCodes.INVALID,
                     $"The '{propertyName}' cannot be equal to '{otherValue}'"
                 ),
                 propertyName
@@ -140,7 +140,7 @@ namespace PowerUtils.Results
                 otherValue,
                 (_) => Error.Validation(
                     propertyName,
-                    Errors.Codes.INVALID,
+                    ResultErrorCodes.INVALID,
                     $"The '{propertyName}' cannot be different to '{otherValue}'"
                 ),
                 propertyName

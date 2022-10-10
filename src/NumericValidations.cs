@@ -32,7 +32,7 @@ namespace PowerUtils.Results
             => value.IfZero(
             (_) => Error.Validation(
                 propertyName,
-                Errors.Codes.INVALID,
+                ResultErrorCodes.INVALID,
                 $"The '{propertyName}' cannot be equal to '0'"
             ),
             propertyName
@@ -88,7 +88,7 @@ namespace PowerUtils.Results
             => value.IfZero(
             (_) => Error.Validation(
                 propertyName,
-                Errors.Codes.INVALID,
+                ResultErrorCodes.INVALID,
                 $"The '{propertyName}' cannot be equal to '0'"
             ),
             propertyName
@@ -142,7 +142,7 @@ namespace PowerUtils.Results
                 max,
                 (_) => Error.Validation(
                     propertyName,
-                    ErrorFactory.CreateMax(max),
+                    ErrorCodeFactory.CreateMax(max),
                     $"The '{propertyName}' is too big. The maximum is {max}"
                 ),
                 propertyName
@@ -204,7 +204,7 @@ namespace PowerUtils.Results
                 max,
                 (_) => Error.Validation(
                     propertyName,
-                    ErrorFactory.CreateMax(max),
+                    ErrorCodeFactory.CreateMax(max),
                     $"The '{propertyName}' is too big. The maximum is {max}"
                 ),
                 propertyName
@@ -261,7 +261,7 @@ namespace PowerUtils.Results
                 min,
                 (_) => Error.Validation(
                     propertyName,
-                    ErrorFactory.CreateMin(min),
+                    ErrorCodeFactory.CreateMin(min),
                     $"The '{propertyName}' is too small. The minimum is {min}"
                 ),
                 propertyName
@@ -323,7 +323,7 @@ namespace PowerUtils.Results
                 min,
                 (_) => Error.Validation(
                     propertyName,
-                    ErrorFactory.CreateMin(min),
+                    ErrorCodeFactory.CreateMin(min),
                     $"The '{propertyName}' is too small. The minimum is {min}"
                 ),
                 propertyName
@@ -380,7 +380,7 @@ namespace PowerUtils.Results
                 otherValue,
                 (_) => Error.Validation(
                     propertyName,
-                    Errors.Codes.INVALID,
+                    ResultErrorCodes.INVALID,
                     $"The '{propertyName}' cannot be equal to '{otherValue}'"
                 ),
                 propertyName
@@ -442,7 +442,7 @@ namespace PowerUtils.Results
                 otherValue,
                 (_) => Error.Validation(
                     propertyName,
-                    Errors.Codes.INVALID,
+                    ResultErrorCodes.INVALID,
                     $"The '{propertyName}' cannot be equal to '{otherValue}'"
                 ),
                 propertyName
@@ -499,7 +499,7 @@ namespace PowerUtils.Results
                 otherValue,
                 (_) => Error.Validation(
                     propertyName,
-                    Errors.Codes.INVALID,
+                    ResultErrorCodes.INVALID,
                     $"The '{propertyName}' cannot be different to '{otherValue}'"
                 ),
                 propertyName
@@ -561,7 +561,7 @@ namespace PowerUtils.Results
                 otherValue,
                 (_) => Error.Validation(
                     propertyName,
-                    Errors.Codes.INVALID,
+                    ResultErrorCodes.INVALID,
                     $"The '{propertyName}' cannot be different to '{otherValue}'"
                 ),
                 propertyName
@@ -627,12 +627,12 @@ namespace PowerUtils.Results
                 max,
                 (_) => Error.Validation(
                     propertyName,
-                    ErrorFactory.CreateMin(min),
+                    ErrorCodeFactory.CreateMin(min),
                     $"The '{propertyName}' is too small. The minimum is {min}"
                 ),
                 (_) => Error.Validation(
                     propertyName,
-                    ErrorFactory.CreateMax(max),
+                    ErrorCodeFactory.CreateMax(max),
                     $"The '{propertyName}' is too big. The maximum is {max}"
                 ),
                 propertyName
@@ -706,12 +706,12 @@ namespace PowerUtils.Results
                 max,
                 (_) => Error.Validation(
                     propertyName,
-                    ErrorFactory.CreateMin(min),
+                    ErrorCodeFactory.CreateMin(min),
                     $"The '{propertyName}' is too small. The minimum is {min}"
                 ),
                 (_) => Error.Validation(
                     propertyName,
-                    ErrorFactory.CreateMax(max),
+                    ErrorCodeFactory.CreateMax(max),
                     $"The '{propertyName}' is too big. The maximum is {max}"
                 ),
                 propertyName

@@ -40,7 +40,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Globalizations
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(countryCode)
                 &&
-                c.Code == Errors.Codes.INVALID
+                c.Code == ResultErrorCodes.INVALID
                 &&
                  c.Description == $"The '{nameof(countryCode)}' is invalid country code. ISO2 formats are allowed"
             );
@@ -64,7 +64,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Globalizations
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(countryCode)
                 &&
-                c.Code == Errors.Codes.INVALID
+                c.Code == ResultErrorCodes.INVALID
                 &&
                  c.Description == $"The '{nameof(countryCode)}' is invalid country code. ISO2 formats are allowed"
             );
@@ -120,7 +120,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Globalizations
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(countryCode)
                 &&
-                c.Code == Errors.Codes.INVALID
+                c.Code == ResultErrorCodes.INVALID
                 &&
                  c.Description == $"The '{nameof(countryCode)}' is invalid country code. ISO2 formats are allowed"
             );

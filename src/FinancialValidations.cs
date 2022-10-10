@@ -50,7 +50,7 @@ namespace PowerUtils.Results
         ) => value.ShouldBeCVV(
             (_) => Error.Validation(
                 propertyName,
-                Errors.Codes.INVALID,
+                ResultErrorCodes.INVALID,
                 $"The '{propertyName}' is an invalid CVV format"
             ),
             propertyName
@@ -137,7 +137,7 @@ namespace PowerUtils.Results
         ) => value.ShouldBeCardNumber(
             (_) => Error.Validation(
                 propertyName,
-                Errors.Codes.INVALID,
+                ResultErrorCodes.INVALID,
                 $"The '{propertyName}' is an invalid card number format"
             ),
             propertyName
@@ -213,7 +213,7 @@ namespace PowerUtils.Results
             ),
             (_) => Error.Validation(
                 propertyName,
-                Errors.Codes.INVALID,
+                ResultErrorCodes.INVALID,
                 $"The '{propertyName}' is an invalid expiry date format"
             ),
             format,

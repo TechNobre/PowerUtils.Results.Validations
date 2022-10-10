@@ -52,7 +52,7 @@ namespace PowerUtils.Results
                         convertible.AddError(
                             Error.Validation(
                                 convertible.Name,
-                                Errors.Codes.INVALID,
+                                ResultErrorCodes.INVALID,
                                 $"The '{validatable.Name}' is an invalid"
                             )
                         );

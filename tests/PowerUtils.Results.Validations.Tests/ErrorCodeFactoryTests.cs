@@ -5,7 +5,7 @@ using Xunit;
 
 namespace PowerUtils.Results.Validations.Tests
 {
-    public class ErrorFactoryTests
+    public class ErrorCodeFactoryTests
     {
         [Fact]
         public void CultureInfoPT_CreateMin_CodeWithComma()
@@ -16,7 +16,7 @@ namespace PowerUtils.Results.Validations.Tests
 
 
             // Act
-            var act = ErrorFactory.CreateMin(value);
+            var act = ErrorCodeFactory.CreateMin(value);
 
 
             // Assert
@@ -32,7 +32,7 @@ namespace PowerUtils.Results.Validations.Tests
 
 
             // Act
-            var act = ErrorFactory.CreateMax(value);
+            var act = ErrorCodeFactory.CreateMax(value);
 
 
             // Assert
@@ -46,7 +46,7 @@ namespace PowerUtils.Results.Validations.Tests
         public void String_CreateMin_Code(string input, string expected)
         {
             // Arrange && Act
-            var act = ErrorFactory.CreateMin(input);
+            var act = ErrorCodeFactory.CreateMin(input);
 
 
             // Assert
@@ -61,7 +61,7 @@ namespace PowerUtils.Results.Validations.Tests
         public void String_CreateMax_Code(string input, string expected)
         {
             // Arrange && Act
-            var act = ErrorFactory.CreateMax(input);
+            var act = ErrorCodeFactory.CreateMax(input);
 
 
             // Assert
@@ -77,7 +77,7 @@ namespace PowerUtils.Results.Validations.Tests
         public void Int_CreateMin_Code(int input, string expected)
         {
             // Arrange && Act
-            var act = ErrorFactory.CreateMin(input);
+            var act = ErrorCodeFactory.CreateMin(input);
 
 
             // Assert
@@ -92,7 +92,7 @@ namespace PowerUtils.Results.Validations.Tests
         public void Int_CreateMax_Code(int input, string expected)
         {
             // Arrange && Act
-            var act = ErrorFactory.CreateMax(input);
+            var act = ErrorCodeFactory.CreateMax(input);
 
 
             // Assert
@@ -108,7 +108,7 @@ namespace PowerUtils.Results.Validations.Tests
         public void UInt_CreateMin_Code(uint input, string expected)
         {
             // Arrange && Act
-            var act = ErrorFactory.CreateMin(input);
+            var act = ErrorCodeFactory.CreateMin(input);
 
 
             // Assert
@@ -123,7 +123,7 @@ namespace PowerUtils.Results.Validations.Tests
         public void UInt_CreateMax_Code(uint input, string expected)
         {
             // Arrange && Act
-            var act = ErrorFactory.CreateMax(input);
+            var act = ErrorCodeFactory.CreateMax(input);
 
 
             // Assert
@@ -139,7 +139,7 @@ namespace PowerUtils.Results.Validations.Tests
         public void Long_CreateMin_Code(long input, string expected)
         {
             // Arrange && Act
-            var act = ErrorFactory.CreateMin(input);
+            var act = ErrorCodeFactory.CreateMin(input);
 
 
             // Assert
@@ -154,7 +154,7 @@ namespace PowerUtils.Results.Validations.Tests
         public void Long_CreateMax_Code(long input, string expected)
         {
             // Arrange && Act
-            var act = ErrorFactory.CreateMax(input);
+            var act = ErrorCodeFactory.CreateMax(input);
 
 
             // Assert
@@ -170,7 +170,7 @@ namespace PowerUtils.Results.Validations.Tests
         public void ULong_CreateMin_Code(ulong input, string expected)
         {
             // Arrange && Act
-            var act = ErrorFactory.CreateMin(input);
+            var act = ErrorCodeFactory.CreateMin(input);
 
 
             // Assert
@@ -185,7 +185,7 @@ namespace PowerUtils.Results.Validations.Tests
         public void ULong_CreateMax_Code(ulong input, string expected)
         {
             // Arrange && Act
-            var act = ErrorFactory.CreateMax(input);
+            var act = ErrorCodeFactory.CreateMax(input);
 
 
             // Assert
@@ -202,7 +202,7 @@ namespace PowerUtils.Results.Validations.Tests
         public void Float_CreateMin_Code(float input, string expected)
         {
             // Arrange && Act
-            var act = ErrorFactory.CreateMin(input);
+            var act = ErrorCodeFactory.CreateMin(input);
 
 
             // Assert
@@ -218,7 +218,7 @@ namespace PowerUtils.Results.Validations.Tests
         public void Float_CreateMax_Code(float input, string expected)
         {
             // Arrange && Act
-            var act = ErrorFactory.CreateMax(input);
+            var act = ErrorCodeFactory.CreateMax(input);
 
 
             // Assert
@@ -235,7 +235,7 @@ namespace PowerUtils.Results.Validations.Tests
         public void Double_CreateMin_Code(double input, string expected)
         {
             // Arrange && Act
-            var act = ErrorFactory.CreateMin(input);
+            var act = ErrorCodeFactory.CreateMin(input);
 
 
             // Assert
@@ -251,7 +251,7 @@ namespace PowerUtils.Results.Validations.Tests
         public void Double_CreateMax_Code(double input, string expected)
         {
             // Arrange && Act
-            var act = ErrorFactory.CreateMax(input);
+            var act = ErrorCodeFactory.CreateMax(input);
 
 
             // Assert
@@ -268,7 +268,7 @@ namespace PowerUtils.Results.Validations.Tests
         public void Decimal_CreateMin_Code(decimal input, string expected)
         {
             // Arrange && Act
-            var act = ErrorFactory.CreateMin(input);
+            var act = ErrorCodeFactory.CreateMin(input);
 
 
             // Assert
@@ -284,7 +284,7 @@ namespace PowerUtils.Results.Validations.Tests
         public void Decimal_CreateMax_Code(decimal input, string expected)
         {
             // Arrange && Act
-            var act = ErrorFactory.CreateMax(input);
+            var act = ErrorCodeFactory.CreateMax(input);
 
 
             // Assert
@@ -306,7 +306,7 @@ namespace PowerUtils.Results.Validations.Tests
 
 
             // Act
-            var act = ErrorFactory.CreateMin(dateTime, format);
+            var act = ErrorCodeFactory.CreateMin(dateTime, format);
 
 
             // Assert
@@ -326,7 +326,7 @@ namespace PowerUtils.Results.Validations.Tests
 
 
             // Act
-            var act = ErrorFactory.CreateMax(dateTime, format);
+            var act = ErrorCodeFactory.CreateMax(dateTime, format);
 
 
             // Assert
@@ -348,7 +348,7 @@ namespace PowerUtils.Results.Validations.Tests
 
 
             // Act
-            var act = ErrorFactory.CreateDateMin(dateTime);
+            var act = ErrorCodeFactory.CreateDateMin(dateTime);
 
 
             // Assert
@@ -368,7 +368,7 @@ namespace PowerUtils.Results.Validations.Tests
 
 
             // Act
-            var act = ErrorFactory.CreateDateMax(dateTime);
+            var act = ErrorCodeFactory.CreateDateMax(dateTime);
 
 
             // Assert
@@ -390,7 +390,7 @@ namespace PowerUtils.Results.Validations.Tests
 
 
             // Act
-            var act = ErrorFactory.CreateDateTimeMin(dateTime);
+            var act = ErrorCodeFactory.CreateDateTimeMin(dateTime);
 
 
             // Assert
@@ -410,7 +410,7 @@ namespace PowerUtils.Results.Validations.Tests
 
 
             // Act
-            var act = ErrorFactory.CreateDateTimeMax(dateTime);
+            var act = ErrorCodeFactory.CreateDateTimeMax(dateTime);
 
 
             // Assert
@@ -430,7 +430,7 @@ namespace PowerUtils.Results.Validations.Tests
 
 
             // Act
-            var act = ErrorFactory.CreateDateMin(date, format);
+            var act = ErrorCodeFactory.CreateDateMin(date, format);
 
 
             // Assert
@@ -449,7 +449,7 @@ namespace PowerUtils.Results.Validations.Tests
 
 
             // Act
-            var act = ErrorFactory.CreateDateMax(date, format);
+            var act = ErrorCodeFactory.CreateDateMax(date, format);
 
 
             // Assert
@@ -468,7 +468,7 @@ namespace PowerUtils.Results.Validations.Tests
 
 
             // Act
-            var act = ErrorFactory.CreateTimeMin(time, format);
+            var act = ErrorCodeFactory.CreateTimeMin(time, format);
 
 
             // Assert
@@ -487,7 +487,7 @@ namespace PowerUtils.Results.Validations.Tests
 
 
             // Act
-            var act = ErrorFactory.CreateTimeMax(time, format);
+            var act = ErrorCodeFactory.CreateTimeMax(time, format);
 
 
             // Assert

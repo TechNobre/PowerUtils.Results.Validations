@@ -2,7 +2,7 @@
 
 namespace PowerUtils.Results
 {
-    public static class ErrorFactory
+    public static class ErrorCodeFactory
     {
         private const string PATTERN_ERROR_CODE_WITH_LIMIT = "{0}:{1}"; // {0} => ERROR CODE, {1} => LIMIT
 

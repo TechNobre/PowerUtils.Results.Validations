@@ -40,7 +40,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Human
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(gender)
                 &&
-                c.Code == Errors.Codes.INVALID
+                c.Code == ResultErrorCodes.INVALID
                 &&
                 c.Description == $"The '{nameof(gender)}' is invalid gender. The allowed values are 'MALE', 'FEMALE' or 'OTHER'"
             );
@@ -64,7 +64,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Human
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(gender)
                 &&
-                c.Code == Errors.Codes.INVALID
+                c.Code == ResultErrorCodes.INVALID
                 &&
                 c.Description == $"The '{nameof(gender)}' is invalid gender. The allowed values are 'MALE', 'FEMALE' or 'OTHER'"
             );

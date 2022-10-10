@@ -26,7 +26,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Objects
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(client)
                 &&
-                c.Code == Errors.Codes.REQUIRED
+                c.Code == ResultErrorCodes.REQUIRED
                 &&
                 c.Description == $"The '{nameof(client)}' cannot be null"
             );
@@ -50,7 +50,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Objects
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(list)
                 &&
-                c.Code == Errors.Codes.REQUIRED
+                c.Code == ResultErrorCodes.REQUIRED
                 &&
                 c.Description == $"The '{nameof(list)}' cannot be null"
             );
@@ -74,7 +74,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Objects
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(array)
                 &&
-                c.Code == Errors.Codes.REQUIRED
+                c.Code == ResultErrorCodes.REQUIRED
                 &&
                 c.Description == $"The '{nameof(array)}' cannot be null"
             );
@@ -114,7 +114,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Objects
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(fakeObj)
                 &&
-                c.Code == Errors.Codes.REQUIRED
+                c.Code == ResultErrorCodes.REQUIRED
                 &&
                 c.Description == $"The '{nameof(fakeObj)}' cannot be null"
             );

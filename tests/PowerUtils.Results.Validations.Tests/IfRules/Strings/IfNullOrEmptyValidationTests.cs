@@ -24,7 +24,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Strings
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(client)
                 &&
-                c.Code == Errors.Codes.REQUIRED
+                c.Code == ResultErrorCodes.REQUIRED
                 &&
                 c.Description == $"The '{nameof(client)}' cannot be null or empty"
             );
@@ -48,7 +48,7 @@ namespace PowerUtils.Results.Validations.Tests.IfRules.Strings
             act.Errors.Should().OnlyContain(c =>
                 c.Property == nameof(client)
                 &&
-                c.Code == Errors.Codes.REQUIRED
+                c.Code == ResultErrorCodes.REQUIRED
                 &&
                 c.Description == $"The '{nameof(client)}' cannot be null or empty"
             );

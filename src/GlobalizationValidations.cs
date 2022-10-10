@@ -53,12 +53,12 @@ namespace PowerUtils.Results
             => value.IfLatitudeOutOfRange(
                 (_) => Error.Validation(
                     propertyName,
-                    ErrorFactory.MIN_LATITUDE,
+                    ErrorCodeFactory.MIN_LATITUDE,
                     $"The '{propertyName}' is invalid. The minimum latitude is {MIN_LATITUDE}"
                 ),
                 (_) => Error.Validation(
                     propertyName,
-                    ErrorFactory.MAX_LATITUDE,
+                    ErrorCodeFactory.MAX_LATITUDE,
                     $"The '{propertyName}' is invalid. The maximum latitude is {MAX_LATITUDE}"
                 ),
                 propertyName
@@ -121,12 +121,12 @@ namespace PowerUtils.Results
             => value.IfLatitudeOutOfRange(
                 (_) => Error.Validation(
                     propertyName,
-                    ErrorFactory.MIN_LATITUDE,
+                    ErrorCodeFactory.MIN_LATITUDE,
                     $"The '{propertyName}' is invalid. The minimum latitude is {MIN_LATITUDE}"
                 ),
                 (_) => Error.Validation(
                     propertyName,
-                    ErrorFactory.MAX_LATITUDE,
+                    ErrorCodeFactory.MAX_LATITUDE,
                     $"The '{propertyName}' is invalid. The maximum latitude is {MAX_LATITUDE}"
                 ),
                 propertyName
@@ -184,12 +184,12 @@ namespace PowerUtils.Results
             => value.IfLongitudeOutOfRange(
                 (_) => Error.Validation(
                     propertyName,
-                    ErrorFactory.MIN_LONGITUDE,
+                    ErrorCodeFactory.MIN_LONGITUDE,
                     $"The '{propertyName}' is invalid. The minimum longitude is {MIN_LONGITUDE}"
                 ),
                 (_) => Error.Validation(
                     propertyName,
-                    ErrorFactory.MAX_LONGITUDE,
+                    ErrorCodeFactory.MAX_LONGITUDE,
                     $"The '{propertyName}' is invalid. The maximum longitude is {MAX_LONGITUDE}"
                 ),
                 propertyName
@@ -254,12 +254,12 @@ namespace PowerUtils.Results
             => value.IfLongitudeOutOfRange(
                 (_) => Error.Validation(
                     propertyName,
-                    ErrorFactory.MIN_LONGITUDE,
+                    ErrorCodeFactory.MIN_LONGITUDE,
                     $"The '{propertyName}' is invalid. The minimum longitude is {MIN_LONGITUDE}"
                 ),
                 (_) => Error.Validation(
                     propertyName,
-                    ErrorFactory.MAX_LONGITUDE,
+                    ErrorCodeFactory.MAX_LONGITUDE,
                     $"The '{propertyName}' is invalid. The maximum longitude is {MAX_LONGITUDE}"
                 ),
                 propertyName
@@ -315,7 +315,7 @@ namespace PowerUtils.Results
         ) => value.IfNotISO2(
             (_) => Error.Validation(
                 propertyName,
-                Errors.Codes.INVALID,
+                ResultErrorCodes.INVALID,
                 $"The '{propertyName}' is invalid country code. ISO2 formats are allowed"
             ),
             propertyName
