@@ -14,6 +14,7 @@ on:
 
 env:
   SDK_VERSION: '6.0.420'
+  SDK_VERSION_5: '5.0.408'
   PACKAGE_PATH: ./src/**/*.nupkg
   NUGET_SERVER: https://api.nuget.org/v3/index.json
 
@@ -36,7 +37,9 @@ jobs:
     - name: "Setup .NET"
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: ${{ env.SDK_VERSION }}
+        dotnet-version: |
+          ${{ env.SDK_VERSION }}
+          ${{ env.SDK_VERSION_5 }}
 
     - name: Semantic Release
       id: 'semantic-release'
