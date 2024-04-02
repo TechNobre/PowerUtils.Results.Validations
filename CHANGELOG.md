@@ -1,3 +1,11 @@
+## [2.0.1](https://github.com/TechNobre/PowerUtils.Results.Validations/compare/v2.0.0...v2.0.1) (2024-04-02)
+
+
+### Bug Fixes
+
+* code ([06a8a3a](https://github.com/TechNobre/PowerUtils.Results.Validations/commit/06a8a3a6e07c4e7e820ecd735f72bad18be4fe96))
+* Publish pipeline ([6c2e30b](https://github.com/TechNobre/PowerUtils.Results.Validations/commit/6c2e30b437ab3ab9821257ace8821f3e93bba454))
+
 # [2.0.0](https://github.com/TechNobre/PowerUtils.Results.Validations/compare/v1.1.1...v2.0.0) (2024-04-02)
 
 
