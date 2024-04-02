@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace PowerUtils.Results
 {
+    [Obsolete("This package has been discontinued because it never evolved, and the code present in this package does not justify its continuation. It is preferable to implement this code directly in the project if necessary.")]
     public static class DateValidations
     {
         public const string MIN_DATE_UTCTODAY = "MIN:DATE_UTCTODAY";

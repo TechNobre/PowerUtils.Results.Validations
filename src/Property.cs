@@ -1,5 +1,8 @@
-﻿namespace PowerUtils.Results
+﻿using System;
+
+namespace PowerUtils.Results
 {
+    [Obsolete("This package has been discontinued because it never evolved, and the code present in this package does not justify its continuation. It is preferable to implement this code directly in the project if necessary.")]
     public interface IProperty<out TValue>
     {
         TValue Value { get; }
@@ -8,8 +11,10 @@
     }
 
 #if NET6_0_OR_GREATER
+    [Obsolete("This package has been discontinued because it never evolved, and the code present in this package does not justify its continuation. It is preferable to implement this code directly in the project if necessary.")]
     public readonly record struct Property<TValue> : IProperty<TValue>
 #else
+    [Obsolete("This package has been discontinued because it never evolved, and the code present in this package does not justify its continuation. It is preferable to implement this code directly in the project if necessary.")]
     public readonly struct Property<TValue> : IProperty<TValue>
 #endif
     {

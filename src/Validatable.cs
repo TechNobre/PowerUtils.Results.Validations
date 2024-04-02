@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace PowerUtils.Results
 {
+    [Obsolete("This package has been discontinued because it never evolved, and the code present in this package does not justify its continuation. It is preferable to implement this code directly in the project if necessary.")]
     public interface IValidatable<TValue> : IProperty<TValue>
     {
         IReadOnlyCollection<IError> Errors { get; }
@@ -13,8 +14,10 @@ namespace PowerUtils.Results
     }
 
 #if NET6_0_OR_GREATER
+    [Obsolete("This package has been discontinued because it never evolved, and the code present in this package does not justify its continuation. It is preferable to implement this code directly in the project if necessary.")]
     public readonly record struct Validatable<TValue> : IValidatable<TValue>
 #else
+[Obsolete("This package has been discontinued because it never evolved, and the code present in this package does not justify its continuation. It is preferable to implement this code directly in the project if necessary.")]
     public readonly struct Validatable<TValue> : IValidatable<TValue>
 #endif
     {
